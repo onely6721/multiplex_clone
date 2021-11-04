@@ -15,7 +15,7 @@ const ShowtimeSchema = new Schema({
         required: true,
     },
     movieId: {
-        type: Schema.Types.ObjectId,
+        type: Types.ObjectId,
         ref: 'Movie',
         required: true,
     },

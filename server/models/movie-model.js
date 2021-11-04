@@ -39,7 +39,7 @@ const MovieSchema = new Schema({
         lowercase: true,
     },
     duration: {
-        type: Number,
+        type: String,
         required: true,
     },
     releaseDate: {
