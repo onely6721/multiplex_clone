@@ -6,7 +6,7 @@ const HallSchema = new Schema({
         required: true
     },
     cinema: {
-        type: Types.objectId,
+        type: Types.ObjectId,
         ref: 'Cinema'
     },
     rows: {

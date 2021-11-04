@@ -14,10 +14,6 @@ const CinemaSchema = new Schema({
         required: true,
         enum: ["Chernihiv", "Kiev", "Lviv", "Odesa", "Kharkiv"]
     },
-    halls: [{
-        type: Types.objectId,
-        ref: 'Hall'
-    }],
     image: {
         type:String
     }
