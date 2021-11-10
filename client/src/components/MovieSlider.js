@@ -76,7 +76,6 @@ export const MovieSlider  = () => {
             <div  style={{
                 marginTop:"30px",
             }}>
-
                 <Container>
                     <h1 style={{color:"white", marginBottom:"30px"}}>Сейчас в прокате</h1>
                     <Slider {...settings}>
