@@ -16,10 +16,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-app.use(cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL
-}))
+app.use(cors())
 
 app.use('/resource', express.static(__dirname + '/resource'));
 app.use('/api', router)

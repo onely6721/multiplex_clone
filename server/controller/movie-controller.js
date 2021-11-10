@@ -11,6 +11,15 @@ class MovieController{
         }
     }
 
+
+    async getNewMovie(req, res, next) {
+        try {
+            const movie = await movieService.getNewMovie()
+            return res.status(200).json(movie)
+        } catch (e) {
+            return res.status(400).send(e)
+        }
+    }
     async getMoviesByCinemaId(req, res, next) {
         try {
             const id = req.params.id

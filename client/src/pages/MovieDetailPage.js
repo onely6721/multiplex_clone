@@ -11,7 +11,7 @@ export const MovieDetailPage = () => {
     return (
         <div>
             <MovieDescription movieId={movieId} />
-            <SelectShowtime/>
+            <SelectShowtime movieId={movieId}/>
         </div>
 
     );

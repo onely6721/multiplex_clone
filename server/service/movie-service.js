@@ -6,6 +6,11 @@ class MovieService {
         return movies
     }
 
+    async getNewMovie() {
+        const  movie = await  MovieModel.findOne()
+        return movie
+    }
+
     async getMoviesByCinemaId(id) {
         const movies = await MovieModel.find({cinema: id})
         return movies
