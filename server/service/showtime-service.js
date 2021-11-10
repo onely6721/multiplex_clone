@@ -1,32 +1,37 @@
-const ShowtimeModel = require('../models/showtime-model')
-
 
 class ShowtimeService {
-    async getShowtimes() {
-        const cinemas = await ShowtimeModel.find()
-        return cinemas
+    async getShowtimes(req, res, next) {
+        try {
+
+        } catch (e) {
+
+        }
     }
 
 
 
-    async getShowtimesForMovie(filter){
+    async update(req,res,next) {
+        try {
 
+        } catch (e) {
+
+        }
     }
 
-    async update(id, newShowtime) {
-        const showTime = await ShowtimeModel.findByIdAndUpdate(id, newShowtime, {new:true})
-        return showTime
+    async create(req,res,next) {
+        try {
+
+        } catch (e) {
+
+        }
     }
 
-    async create(showtime) {
-        const newShowtime = await ShowtimeModel.create(showtime)
-        return newShowtime
-    }
+    async delete(req,res,next) {
+        try {
 
-    async delete(id) {
+        } catch (e) {
 
-        await ShowtimeModel.findByIdAndDelete(id)
-
+        }
     }
 }
 

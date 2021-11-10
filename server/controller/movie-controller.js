@@ -31,19 +31,10 @@ class MovieController{
         }
     }
 
-    async getNewMovie(req,res,next) {
-        try {
-            const movie = await movieService.getNewMovie()
-            return res.status(200).json(movie
-            )
-        } catch (e) {
-            return res.status(400).send(e)
-        }
-    }
     async update(req,res,next) {
         try {
             const id = req.params.id
-            const movie = await movieService.update(id, {...req.body, image: req.file.filename})
+            const movie = await movieService.update(id, req.body)
             return res.status(200).json(movie)
 
         } catch (e) {
@@ -53,7 +44,6 @@ class MovieController{
 
     async create(req,res,next) {
         try{
-
             const movie = await movieService.create({
                 ...req.body,
                 image: req.file.filename

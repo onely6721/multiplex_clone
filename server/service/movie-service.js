@@ -20,10 +20,7 @@ class MovieService {
         const movie = await MovieModel.findByIdAndUpdate(id, newMovie, {new:true})
         return movie
     }
-    async getNewMovie() {
-        const movie = await MovieModel.findOne()
-        return movie
-    }
+
     async create(movie) {
         const newMovie = await MovieModel.create(movie)
         return newMovie
