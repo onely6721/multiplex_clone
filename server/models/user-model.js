@@ -7,11 +7,9 @@ const UserSchema = new Schema({
     },
     firstName: {
         type: String,
-        required: true
     },
     secondName: {
         type: String,
-        required: true
     },
     role: {
         type: String,

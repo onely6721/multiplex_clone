@@ -4,7 +4,8 @@ import {Link} from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {API} from "../API/api";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles"
+
 import Container from "@mui/material/Container";
 const useStyles = makeStyles({
     title: {

@@ -1,7 +1,7 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles"
 import {API} from "../API/api";
 import {useEffect, useState} from "react";
 

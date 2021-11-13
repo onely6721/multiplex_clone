@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import {MainPage} from "./pages/MainPage";
 import {MovieDetailPage} from "./pages/MovieDetailPage";
-
+import {ReservationPage} from "./pages/ReservationPage";
 
 export const useRoutes = isAuthenticated => {
 
@@ -15,6 +15,7 @@ export const useRoutes = isAuthenticated => {
             <Routes>
                 <Route path="/" element={<MainPage/>}/>
                 <Route path="/detail/:id" element={<MovieDetailPage/>}/>
+                <Route path="/reservation" element={<ReservationPage/>}/>
             </Routes>
         )
 

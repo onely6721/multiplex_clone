@@ -1,15 +1,23 @@
 const ShowtimeModel = require('../models/showtime-model')
-
+const moment = require('moment-timezone')
 
 class ShowtimeService {
     async getShowtimes() {
-        const cinemas = await ShowtimeModel.find()
-        return cinemas
+        const showtimes = await ShowtimeModel.find()
+        return showtimes
     }
 
 
     async getShowtimesForMovie(filter) {
-        return
+        const endDate = moment(filter.startDate).endOf('d')
+        console.log(endDate)
+        const showtimes = await ShowtimeModel.find({
+            cinemaId: filter.cinemaId,
+            movieId: filter.movieId,
+            startDate: {$gte: filter.startDate, $lte: endDate}
+        }).sort({startDate: -1})
+        return showtimes
+
     }
 
 
@@ -20,6 +28,17 @@ class ShowtimeService {
 
     async create(showtime) {
 
+
+        const showTime = await ShowtimeModel.create({
+            startAt: showtime.startAt,
+            startDate: moment(showtime.startDate).add(2, 'h').toDate(),
+            endDate: moment(showtime.endDate).add(2, 'h').toDate(),
+            movieId: showtime.movieId,
+            cinemaId: showtime.cinemaId,
+            hallId: showtime.hallId,
+            price: showtime.price
+        })
+        return showTime
     }
 
     async delete(id) {

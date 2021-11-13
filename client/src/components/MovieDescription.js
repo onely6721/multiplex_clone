@@ -1,8 +1,8 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import {Button, Grid} from "@material-ui/core";
+import {Button, Grid} from "@mui/material"
 import moment from "moment";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from "@mui/styles"
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {API} from "../API/api";
@@ -14,11 +14,11 @@ const useStyles = makeStyles({
         color:"white"
     },
     poster:{
-        height: "40vh"
+        boxShadow: "3px 3px 5px 6px #ccc"
     },
     description: {
         color: "silver"
-    }
+    },
 
 });
 
@@ -43,7 +43,7 @@ export const MovieDescription = props => {
             <Typography component="h1" align="center">{movie.title}</Typography>
             <Grid container spacing={2}>
                 <Grid item  md={3} className={classes.description}>
-                    <img src={link} alt=""/>
+                    <img src={link} className={classes.poster} alt=""/>
                     <Button variant="outlined" color="primary">Дивись трейлеру</Button>
                 </Grid>
                 <Grid item  md={2} >
@@ -67,7 +67,6 @@ export const MovieDescription = props => {
                     <Typography>{movie.duration}</Typography>
                 </Grid>
             </Grid>
-            <h1>{movie.endDate}</h1>
             <Typography className={classes.description}>{movie.description}</Typography>
         </Container>
     )
