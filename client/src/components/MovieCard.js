@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { makeStyles } from "@mui/styles"
 import {API} from "../API/api";
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -59,9 +60,11 @@ export const MovieCard = () => {
         }}>
             <div className="movie-card">
                 <Container>
-                    <h1 style={{ paddingTop:"20%", }}>
-                        {movie.title}
-                    </h1>
+                    <Link to={`/detail/${movie._id}`}>
+                        <h1 style={{ paddingTop:"20%", }}>
+                            {movie.title}
+                        </h1>
+                    </Link>
                     <Typography className={classes.description}>
                         {movie.description}
                     </Typography>

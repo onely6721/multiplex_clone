@@ -2,7 +2,7 @@ const {Schema, model, Types} = require('mongoose');
 
 const ReservationSchema = new Schema({
     showtime: {
-        type: Types.objectId,
+        type: Types.ObjectId,
         ref: "Showtime",
         required: true
     },
@@ -19,7 +19,7 @@ const ReservationSchema = new Schema({
         default: false
     },
     owner: {
-        type: Types.objectId,
+        type: Types.ObjectId,
         ref: "User",
         required: true
     }

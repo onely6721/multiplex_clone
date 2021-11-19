@@ -4,7 +4,6 @@ const MovieSchema = new Schema({
     title: {
         type: String,
         required: true,
-        lowercase: true,
     },
     image: {
         type: String,
@@ -12,12 +11,10 @@ const MovieSchema = new Schema({
     language: {
         type: String,
         required: true,
-        lowercase: true,
     },
     genre: [{
         type: String,
         required: true,
-        lowercase: true,
     }],
     ratingIMDB: {
       type: String,
@@ -26,17 +23,14 @@ const MovieSchema = new Schema({
     director: {
         type: String,
         required: true,
-        lowercase: true,
     },
     cast: {
         type: String,
         required: true,
-        lowercase: true,
     },
     description: {
         type: String,
         required: true,
-        lowercase: true,
     },
     duration: {
         type: String,

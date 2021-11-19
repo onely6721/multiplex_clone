@@ -7,12 +7,11 @@ import Container from "@mui/material/Container";
 import generateArray from "../tools/GenerateArray"
 import {useEffect, useState} from "react";
 import {API} from "../API/api";
+import {Link} from "react-router-dom";
 
 export const SelectShowtime = props => {
     const [date, setDate] = useState()
     const [showtimes, setShowtimes] = useState([])
-    const arr1 = [1,2,3,4,5]
-    const arr2 = [1,2,3,4,5]
     const handleChange = e => {
         setDate(e.target.value)
     }
@@ -41,7 +40,12 @@ export const SelectShowtime = props => {
         <Container>
             <Box sx={{ minWidth: 120 }}>
                 <FormControl  sx={{  minWidth: 120}}>
-                    <InputLabel id="select-label" style={{color:"white"}}>Выберите дату</InputLabel>
+                    <InputLabel
+                        id="select-label"
+                        style={{color:"white"}}
+                    >
+                        Выберите дату
+                    </InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -55,6 +59,7 @@ export const SelectShowtime = props => {
                                 <MenuItem
                                     style={{minWidth:"100%"}}
                                     value={moment().add(i, 'd').format("YYYY-MM-DD")}
+                                    key={i}
                                 >
                                     {moment().add(i, 'd').format("YYYY-MM-DD")}
                                 </MenuItem>
@@ -63,20 +68,15 @@ export const SelectShowtime = props => {
                     </Select>
                 </FormControl>
                 {showtimes.map((showtime, index) => {
-                    const dateNow = moment()
                     const dateShowtime = moment(showtime.startDate)
-                    if(dateShowtime > dateNow)
+                    if(dateShowtime.isAfter(new Date()))
                         return (
-                            <Button>{showtime.startAt}</Button>
+                            <Link to={`/reservation/${showtime._id}`} key={index}>
+                               <Button>{showtime.startAt}</Button>
+                            </Link>
                         )
-
                 }).reverse()}
             </Box>
-
-            <br/>
-            <p>rofliki</p>
-            <div>
-            </div>
         </Container>
     )
 }

@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #1a1a1a ;
+  color: white;
   padding: 0;
 }
 
@@ -60,8 +61,9 @@ code {
   transition: 2s;
 }
 
-*a{
+a{
   color: white;
+  text-decoration: none;
 }
 .slide-movie:target {
   background: rgba(0, 0, 0, 0.5);

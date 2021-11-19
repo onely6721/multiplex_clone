@@ -3,7 +3,6 @@ import Typography from "@mui/material/Typography";
 import {Button, Grid} from "@mui/material"
 import moment from "moment";
 import {makeStyles} from "@mui/styles"
-import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {API} from "../API/api";
 

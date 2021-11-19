@@ -15,7 +15,7 @@ export const useRoutes = isAuthenticated => {
             <Routes>
                 <Route path="/" element={<MainPage/>}/>
                 <Route path="/detail/:id" element={<MovieDetailPage/>}/>
-                <Route path="/reservation" element={<ReservationPage/>}/>
+                <Route path="/reservation/:id" element={<ReservationPage/>}/>
             </Routes>
         )
 

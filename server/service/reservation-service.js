@@ -1,36 +1,40 @@
+const ReservationModel = require('../models/reservation-model')
+
 
 class ReservationService {
-    async getReservations(req, res, next) {
-        try {
+    async getReservations() {
+        const reservations = await ReservationModel.find()
+        return reservations
+    }
 
-        } catch (e) {
+    async getReservationById(id) {
+        const reservation = await ReservationModel.findById(id)
+        return reservation
+    }
 
-        }
+    async getReservationsForUser(id) {
+        const reservations = await ReservationModel.find({owner: id})
+        return reservations
+    }
+
+    async getReservationsForShowtime(id) {
+        const reservations = await ReservationModel.find({showtime: id})
+        return reservations
     }
 
 
-    async update(req,res,next) {
-        try {
-
-        } catch (e) {
-
-        }
+    async update(id, reservation) {
+        const newReservation = await ReservationModel.findByIdAndUpdate(id, reservation)
+        return newReservation
     }
 
-    async create(req,res,next) {
-        try {
-
-        } catch (e) {
-
-        }
+    async create(reservation) {
+        const newReservation = await ReservationModel.create(reservation)
+        return newReservation
     }
 
-    async delete(req,res,next) {
-        try {
-
-        } catch (e) {
-
-        }
+    async delete(id) {
+        await ReservationModel.findByIdAndDelete(id)
     }
 }
 

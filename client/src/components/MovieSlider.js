@@ -89,7 +89,9 @@ export const MovieSlider  = () => {
                                     />
                                     <Link
                                         to={`/detail/${movie._id}`}
-                                        className={classes.title}>{movie.title}
+                                        className={classes.title}
+                                    >
+                                        {movie.title}
                                     </Link>
                                 </div>
                             )

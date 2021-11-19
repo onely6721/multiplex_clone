@@ -1,22 +1,49 @@
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import {Avatar, Divider, ListItemIcon, Menu} from "@mui/material";
-import Box from "@mui/material/Box";
+import {Avatar, AppBar, Toolbar, Typography, IconButton, Menu, Box} from "@mui/material";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import ListSubheader from '@mui/material/ListSubheader';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {API} from "../API/api";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../context/AuthContext";
+import {LoginModal} from "./LoginModal";
+
+const PaperProps = {
+    elevation: 0,
+        sx: {
+        overflow: 'visible',
+            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+            mt: 1.5,
+            '& .MuiAvatar-root': {
+            width: 32,
+                height: 32,
+                ml: -0.5,
+                mr: 1,
+        },
+        '&:before': {
+            content: '""',
+                display: 'block',
+                position: 'absolute',
+                top: 0,
+                right: 14,
+                width: 10,
+                height: 10,
+                bgColor: 'background.paper',
+                transform: 'translateY(-50%) rotate(45deg)',
+                zIndex: 0,
+        },
+    },
+}
 
 export const Header = () => {
-    const test = false
+    const cities = ['Chernihiv', 'Kiev', 'Lviv', 'Odesa', 'Kharkiv']
+    const {isAuth, setAuth} = useContext(AuthContext)
     const [cinemas, setCinemas] = useState([])
     const [cinema, setCinema] = useState()
+    const [openLogin, setOpenLogin] = useState(false)
+    const [openRegister, setOpenRegister] = useState(false)
 
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl);
@@ -60,7 +87,10 @@ export const Header = () => {
                         component="div"
                         sx={{ flexGrow: 1, color:"white"}}
                     >
-                        <Link to="/" style={{color: "white"}}>
+                        <Link
+                            to="/"
+                            style={{color: "white"}}
+                        >
                             Multiplex Clone
                         </Link>
                     </Typography>
@@ -73,96 +103,75 @@ export const Header = () => {
                             style={{color:"white"}}
                             onChange={(e) => handleSelect(e)}
                         >
-
-                            <ListSubheader >Чернигов</ListSubheader>
-                            {cinemas.map((cinema, index) => {
-                                if(cinema.city == "Chernihiv")
-                                    return (
-                                        <MenuItem key={cinema._id} value={cinema._id}>
-                                        {cinema.name}
-                                     </MenuItem>
-                                    )
-                            })}
-                            <ListSubheader>Киев</ListSubheader>
-                            {cinemas.map((cinema, index) => {
-                                if(cinema.city == "Kiev")
-                                    return (<MenuItem value={cinema._id}>{cinema.name}</MenuItem>)
-                            })}
-                            <ListSubheader>Львов</ListSubheader>
-                            {cinemas.map((cinema, index) => {
-                                if(cinema.city == "Lviv")
-                                    return (<MenuItem value={cinema._id}>{cinema.name}</MenuItem>)
-                            })}
-                            <ListSubheader>Одеса</ListSubheader>
-                            {cinemas.map((cinema, index) => {
-                                if(cinema.city == "Odesa")
-                                    return (<MenuItem value={cinema._id}>{cinema.name}</MenuItem>)
-                            })}
-                            <ListSubheader>Харьков</ListSubheader>
-                            {cinemas.map((cinema, index) => {
-                                if(cinema.city == "Kharkiv")
-                                    return (<MenuItem value={cinema._id}>{cinema.name}</MenuItem>)
+                            {cities.map((city, i) => {
+                                return [
+                                    <ListSubheader>{city}</ListSubheader>,
+                                     cinemas.map((cinema,index) => {
+                                            if(cinema.city === city)
+                                                return (
+                                                    <MenuItem
+                                                        key={cinema._id}
+                                                        value={cinema._id}
+                                                    >
+                                                        {cinema.name}
+                                                    </MenuItem>
+                                            )})
+                                    ]
                             })}
                         </Select>
                     </FormControl>
-                    <IconButton  size="small" sx={{ ml: 2 }}>
-                        <Avatar sx={{ width: 32, height: 32 }}   onClick={handleClick}>?</Avatar>
+                    <IconButton
+                        size="small"
+                        sx={{ ml: 2 }}
+                    >
+                        <Avatar
+                            sx={{ width: 32, height: 32 }}
+                            onClick={handleClick}
+                        >
+                            ?
+                        </Avatar>
                     </IconButton>
                     <Menu
                         anchorEl={anchorEl}
                         open={open}
                         onClose={handleClose}
-
-                        PaperProps={{
-                            elevation: 0,
-                            sx: {
-                                overflow: 'visible',
-                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                                mt: 1.5,
-                                '& .MuiAvatar-root': {
-                                    width: 32,
-                                    height: 32,
-                                    ml: -0.5,
-                                    mr: 1,
-                                },
-                                '&:before': {
-                                    content: '""',
-                                    display: 'block',
-                                    position: 'absolute',
-                                    top: 0,
-                                    right: 14,
-                                    width: 10,
-                                    height: 10,
-                                    bgColor: 'background.paper',
-                                    transform: 'translateY(-50%) rotate(45deg)',
-                                    zIndex: 0,
-                                },
-                            },
-                        }}
+                        PaperProps={PaperProps}
                         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
-                        {test
+                        {
+                            isAuth
                             ?
-                                <MenuItem>  Profile </MenuItem>
-                            :
                                 <>
-                                    <MenuItem> Login </MenuItem>
-                                    <MenuItem>  Registration </MenuItem>
+                                    <MenuItem>
+                                        Profile
+                                    </MenuItem>
+                                    <MenuItem
+                                        onClick={() => {
+                                            localStorage.removeItem("token")
+                                            setAuth(false)
+                                        }}
+                                    >
+                                        Logout
+                                    </MenuItem>
                                 </>
 
+                            :
+                                <>
+                                    <MenuItem
+                                        onClick={()=>setOpenLogin(!openLogin)}
+                                    >
+                                        Login
+                                    </MenuItem>
+                                    <MenuItem>
+                                        Registration
+                                    </MenuItem>
+                                </>
                         }
-
-                        <Divider />
-                        <MenuItem>
-                            Add another account
-                        </MenuItem>
-                        <MenuItem>
-                            Settings
-                        </MenuItem>
-                        <MenuItem>
-                            Logout
-                        </MenuItem>
+                        <LoginModal
+                            open={openLogin}
+                            close={() => setOpenLogin(false)}
+                        />
                     </Menu>
                 </Toolbar>
             </AppBar>

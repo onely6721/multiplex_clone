@@ -11,6 +11,17 @@ class ShowtimeController{
         }
     }
 
+    async getShowtimeById(req,res,next) {
+        try {
+            const showtimeId = req.params.id
+            const showtime = await showtimeService.getShowtimeById(showtimeId)
+            console.log("hello")
+            return res.status(200).json(showtime)
+        } catch (e) {
+            return res.status(400).send(e)
+        }
+    }
+
     async getShowtimesForMovie(req, res, next) {
         try {
             const {cinemaId, movieId, startDate} = req.query
