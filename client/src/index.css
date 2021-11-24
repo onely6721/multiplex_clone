@@ -54,7 +54,17 @@ code {
 .slick-slide, .slick-track, .slick-list, .slick-slide-fade {
   /* ... */
   position: relative;
-  z-index:100;
+  z-index:1;
+}
+
+.slick-slide:hover{
+  background: black;
+}
+
+.slick-prev, .slick-next{
+  height: 50px !important;
+  width: 50px !important;
+  z-index: 1000;
 }
 
 .slide-movie{
@@ -69,3 +79,4 @@ a{
   background: rgba(0, 0, 0, 0.5);
   transition: 2s;
 }
+

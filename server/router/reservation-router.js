@@ -9,7 +9,7 @@ router.get('/forShowtime/:id', reservationController.getReservationsForShowtime)
 router.get('/:id', reservationController.getReservationById)
 router.post('/create',AuthMiddleware, reservationController.create)
 router.put('/:id', reservationController.update)
-router.delete('/:id', reservationController.delete)
+router.delete('/:id', AuthMiddleware, reservationController.delete)
 
 
 module.exports = router

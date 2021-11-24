@@ -28,7 +28,6 @@ const useStyles = makeStyles({
 
 });
 
-
 export const ReservationPage = props => {
     const id = useParams().id
     const {isAuth} = useContext(AuthContext)
@@ -39,9 +38,6 @@ export const ReservationPage = props => {
     const [showtime, setShowtime] = useState({})
     const [reservations, setReservations] = useState([])
     const [reservedSeats, setReservedSeats] = useState([])
-
-
-
 
 
     const addReservation = (e,row, column) => {
@@ -182,7 +178,6 @@ export const ReservationPage = props => {
                                         "Authorization": `Bearer ${localStorage.getItem('token')}`,
                                       }
                                 })
-                                alert(response.data)
                             })
                         }}
                     >

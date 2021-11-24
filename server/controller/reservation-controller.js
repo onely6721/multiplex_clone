@@ -34,7 +34,7 @@ class ReservationController{
 
     async getReservationsForUser(req, res, next) {
         try {
-            const id = req.user._id
+            const id = req.user.userId
             const reservations = await reservationService.getReservationsForUser(id)
             return res.status(200).json(reservations)
         } catch (e) {
@@ -67,7 +67,8 @@ class ReservationController{
     async delete(req,res,next) {
         try {
             const id = req.params.id
-            await reservationService.delete(id)
+            const user = req.user
+            await reservationService.delete(id, user)
             return res.status(200).json({message:"Успешно удалено"})
         } catch (e) {
             return res.status(400).json({message: e.message})

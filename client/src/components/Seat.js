@@ -2,7 +2,6 @@ import {Button} from "@mui/material";
 import {useState} from "react";
 
 const green = '#39D1B4'
-const blue = "blue"
 
 export const Seat = props => {
     const [selected,setSelected] = useState(false)

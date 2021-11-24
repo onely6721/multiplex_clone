@@ -5,58 +5,56 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {API} from "../API/api";
 import { makeStyles } from "@mui/styles"
-
 import Container from "@mui/material/Container";
+import {Typography} from "@mui/material";
+
 const useStyles = makeStyles({
     title: {
         position: "absolute",
         top: "40%",
-        left: "30%",
         color: "white",
     },
     movieImage: {
         '&:hover': {
             background:` rgba("0, 0, 0, 0.5")`,
         }
-    }
+    },
+    slide: {
+        zIndex: -1000,
+    },
 
 
 });
 const settings = {
-    dots: true,
-    infinite: false,
+    centerMode: true,
+    infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: true,
+    slidesToShow: 4,
+    swipeToSlide: true,
     adaptiveHeight: true,
+    dots: true,
+
     responsive: [
         {
-            breakpoint: 1024,
+            breakpoint: 1600,
             settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: true
+                slidesToShow: 3
             }
         },
         {
-            breakpoint: 600,
+            breakpoint: 1250,
             settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                initialSlide: 2
+                slidesToShow: 2
             }
         },
         {
-            breakpoint: 480,
+            breakpoint: 750,
             settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
+                slidesToShow: 1
             }
         }
     ]
-}
+};
 
 
 
@@ -82,18 +80,10 @@ export const MovieSlider  = () => {
                     <Slider {...settings}>
                         {movies.map((movie, index) => {
                             return(
-                                <div key={movie._id}>
-                                    <img
-                                        className={classes.movieImage} src={`http://localhost:5000/resource/images/${movie.image}`}
-                                         alt=""
-                                    />
-                                    <Link
-                                        to={`/detail/${movie._id}`}
-                                        className={classes.title}
-                                    >
-                                        {movie.title}
-                                    </Link>
-                                </div>
+                                <Link key={movie._id}  to={`/detail/${movie._id}`}>
+                                    <img src={`http://localhost:5000/resource/images/${movie.image}`}/>
+                                     <Typography   align="center" component="h4"> {movie.title}</Typography>
+                                </Link>
                             )
                         })}
                     </Slider>
