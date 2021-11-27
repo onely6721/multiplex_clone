@@ -12,7 +12,7 @@ const CinemaSchema = new Schema({
     city: {
         type: String,
         required: true,
-        enum: ["Chernihiv", "Kiev", "Lviv", "Odesa", "Kharkiv"]
+        enum: ["Chernihiv", "Kiev", "Lviv", "Odessa", "Kharkiv"]
     },
     image: {
         type:String

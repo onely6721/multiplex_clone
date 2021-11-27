@@ -50,13 +50,14 @@ class ShowtimeController{
 
     async create(req,res,next) {
         try {
-            const cinema = await showtimeService.create(req.body)
-            return res.status(200).json(cinema)
+            console.log(req.body)
+            const showtime = await showtimeService.create(req.body)
+            return res.status(200).json(showtime)
         } catch (e) {
-                return res.status(400).send(e)
+            return res.status(400).send(e)
 
-            }
         }
+    }
 
 
         async delete(req,res,next) {

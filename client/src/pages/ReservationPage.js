@@ -96,7 +96,7 @@ export const ReservationPage = props => {
             <h2 align="center">Кінозал</h2>
             <div
                 style={{
-                    gridTemplateColumns: `repeat(${showtime.rows}, 1fr)`,
+                    gridTemplateColumns: `repeat(${showtime.columns}, 1fr)`,
                 }}
                 className={classes.hall}
             >

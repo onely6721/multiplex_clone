@@ -42,17 +42,29 @@ class MovieController{
 
     async update(req,res,next) {
         try {
+            console.log(req.body)
             const id = req.params.id
-            const movie = await movieService.update(id, req.body)
+            const newMovie = req.file ?
+                {
+                    ...req.body,
+                    image: req.file.filename
+                }
+                    :
+                {
+                    ...req.body,
+                }
+            const movie = await movieService.update(id, newMovie)
             return res.status(200).json(movie)
 
         } catch (e) {
+            console.log(e.message)
             return res.status(400).send(e)
         }
     }
 
     async create(req,res,next) {
         try{
+            console.log(req.body)
             const movie = await movieService.create({
                 ...req.body,
                 image: req.file.filename

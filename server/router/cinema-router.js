@@ -6,9 +6,9 @@ const fileUpload = require('../service/file-uploader')
 
 
 router.get('/', cinemaController.getCinemas)
-router.post('/create',fileUpload.single('avatar'), cinemaController.create)
+router.post('/create',fileUpload.single('image'), cinemaController.create)
 router.get('/:id', cinemaController.getCinemaById)
-router.put('/:id',fileUpload.single('avatar'), cinemaController.update)
+router.put('/:id',fileUpload.single('image'), cinemaController.update)
 router.delete('/:id', cinemaController.delete)
 
 

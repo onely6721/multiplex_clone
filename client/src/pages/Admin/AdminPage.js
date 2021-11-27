@@ -1,10 +1,10 @@
 import {Route, Routes} from "react-router-dom"
 import React from "react";
 import {AdminMoviesPage} from "./AdminMoviesPage/AdminMoviesPage";
-import {AdminCinemasPage} from "./AdminCinemasPage";
-import {AdminHallsPage} from "./AdminHallsPage";
-import {AdminShowtimesPage} from "./AdminShowtimesPage";
-import {AdminReservationsPage} from "./AdminReservationsPage";
+import {AdminCinemasPage} from "./AdminCinemasPage/AdminCinemasPage";
+import {AdminHallsPage} from "./AdminHallsPage/AdminHallsPage";
+import {AdminShowtimesPage} from "./AdminShowtimePage/AdminShowtimesPage";
+import {AdminReservationsPage} from "./AdminReservationPage/AdminReservationsPage";
 
 export const AdminPage = () => {
     return (

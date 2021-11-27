@@ -8,7 +8,7 @@ import {API} from "../../API/api";
 
 
 export const SelectCinema = props => {
-    const cities = ['Chernihiv', 'Kiev', 'Lviv', 'Odesa', 'Kharkiv']
+    const cities = ['Chernihiv', 'Kiev', 'Lviv', 'Odessa', 'Kharkiv']
     const [cinemas, setCinemas] = useState([])
     const [cinema, setCinema] = useState()
 

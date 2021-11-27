@@ -4,8 +4,8 @@ const userController = require('../controller/user-controller')
 
 router.post('/login', userController.login )
 router.post('/registration', userController.registration )
-router.get('/')
+router.get('/', userController.getUsers)
 router.put('/:id')
-router.get('/all')
+router.get('/:id', userController.getById)
 router.delete('/:id')
 module.exports = router

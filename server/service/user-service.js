@@ -49,21 +49,18 @@ class UserService {
         return {token:token, user: userDto}
     }
 
-    async getUsers(req, res, next) {
-        try {
-
-        } catch (e) {
-
-        }
+    async getUsers() {
+       const users = await UserModel.find()
+        return users
     }
     
-    async getUser(req, res ,next) {
-        try{
-            
-        } catch (e) {
-            
-        }
+    async getById(id) {
+        const user = await UserModel.findById(id)
+        return user
+
+
     }
+
 
     async update(req,res,next) {
         try {

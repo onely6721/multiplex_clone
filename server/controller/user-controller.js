@@ -29,17 +29,21 @@ class UserController{
 
     async getUsers(req, res, next) {
         try {
-
+            const users = await userService.getUsers()
+            return res.status(200).json(users)
         } catch (e) {
-
+            console.log(e.message)
         }
     }
     
-    async getUser(req, res ,next) {
+    async getById(req, res ,next) {
         try{
-            
+            const id = req.params.id
+            const user = await userService.getById(id)
+            return res.status(200).json(user)
         } catch (e) {
-            
+            console.log(e.message)
+            return res.status(400).json(e.message)
         }
     }
 

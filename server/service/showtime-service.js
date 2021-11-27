@@ -50,20 +50,12 @@ class ShowtimeService {
 
     async create(showtime) {
 
-        const showTime = await ShowtimeModel.create({
-            startAt: showtime.startAt,
-            startDate: moment(showtime.startDate).add(2, 'h').toDate(),
-            endDate: moment(showtime.endDate).add(2, 'h').toDate(),
-            movieId: showtime.movieId,
-            cinemaId: showtime.cinemaId,
-            hallId: showtime.hallId,
-            price: showtime.price
-        })
+        const showTime = await ShowtimeModel.create(showtime)
         return showTime
     }
 
     async delete(id) {
-
+        await ShowtimeModel.findByIdAndDelete(id)
     }
 }
 module.exports = new ShowtimeService()

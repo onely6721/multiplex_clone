@@ -12,10 +12,10 @@ import {AuthContext} from "./context/AuthContext";
 import {ShowReservationPage} from "./pages/ShowReservationPage";
 import {AdminPage} from "./pages/Admin/AdminPage";
 import {AdminMoviesPage} from "./pages/Admin/AdminMoviesPage/AdminMoviesPage";
-import {AdminCinemasPage} from "./pages/Admin/AdminCinemasPage";
-import {AdminHallsPage} from "./pages/Admin/AdminHallsPage";
-import {AdminShowtimesPage} from "./pages/Admin/AdminShowtimesPage";
-import {AdminReservationsPage} from "./pages/Admin/AdminReservationsPage";
+import {AdminCinemasPage} from "./pages/Admin/AdminCinemasPage/AdminCinemasPage";
+import {AdminHallsPage} from "./pages/Admin/AdminHallsPage/AdminHallsPage"
+import {AdminShowtimesPage} from "./pages/Admin/AdminShowtimePage/AdminShowtimesPage";
+import {AdminReservationsPage} from "./pages/Admin/AdminReservationPage/AdminReservationsPage";
 
 export const useRoutes = isAuthenticated => {
 

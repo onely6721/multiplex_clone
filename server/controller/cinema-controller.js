@@ -22,6 +22,7 @@ class CinemaController{
 
     async update(req,res,next) {
         try {
+            console.log(req.body)
             const id = req.params.id
             const { name, address, city} = req.body
             const cinema = await cinemaService.update(id, {
