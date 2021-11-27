@@ -15,7 +15,12 @@ import {
 import moment from "moment";
 import {TablePaginationActions} from "../TablePaginationActions";
 
-
+const nullCinema = {
+    name: null,
+    address:null,
+    file: null,
+    city: null,
+}
 
 export const AdminCinemasPage = () => {
     const [cinemas, setCinemas] = useState([])
@@ -23,8 +28,29 @@ export const AdminCinemasPage = () => {
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const handleDelete = async (cinema) => {
+        setCinemas(
+            cinemas.filter((item) => {
+                if(item._id != cinema._id)
+                    return item
+            }))
         await API.delete("/cinemas/"+cinema._id)
     }
+
+    const handleCreate = async (cinema) => {
+        setCinemas([...cinemas, cinema])
+    }
+
+    const handleUpdate = async (cinema) => {
+
+        const newCinemas = cinemas.map((item, index) => {
+            if (item._id == cinema._id) {
+                return cinema
+            }
+            return  item
+        })
+        setCinemas([...newCinemas])
+    }
+
     useEffect(() => {
         const getCinemas = async () => {
             try {
@@ -48,6 +74,7 @@ export const AdminCinemasPage = () => {
     return (
         <div style={{color:"white", marginTop:"100px"}}>
             <h1 align="center">Cinemas</h1>
+            <CinemasDialog create={handleCreate} cinema={nullCinema} method="POST"/>
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -70,7 +97,7 @@ export const AdminCinemasPage = () => {
                                     <TableCell align="right">{cinema.address}</TableCell>
                                     <TableCell align="right">{cinema.city}</TableCell>
                                     <TableCell align="right">
-                                        <CinemasDialog cinema={cinema} method="PUT"/>
+                                        <CinemasDialog update={handleUpdate} cinema={cinema} method="PUT"/>
                                     </TableCell>
                                     <TableCell align="right">
                                         <Button

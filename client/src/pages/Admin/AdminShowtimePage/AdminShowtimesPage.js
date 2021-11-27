@@ -32,8 +32,48 @@ export const AdminShowtimesPage = () => {
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const handleDelete = async (showtime) => {
+        setShowtimes(
+            showtimes.filter((item) => {
+                if(item._id != showtime._id)
+                    return item
+        }))
         await API.delete("/showtimes/"+showtime._id)
     }
+
+    const handleCreate = async (showtime) => {
+        const cinema = await API.get("/cinemas/"+showtime.cinemaId)
+        const movie = await API.get("/movies/"+showtime.movieId)
+        const hall = await API.get("/halls/"+showtime.hallId)
+        const newShowtime = {
+            ...showtime,
+            cinemaName: cinema.data.name,
+            movieName: movie.data.title,
+            hallName: hall.data.name,
+        }
+        setShowtimes([...showtimes, newShowtime])
+    }
+
+    const handleUpdate = async (showtime) => {
+
+        const newShowtimes =  await Promise.all(
+            showtimes.map(async (item, index) => {
+                if (item._id == showtime._id){
+                    const cinema = await API.get("/cinemas/"+showtime.cinemaId)
+                    const movie = await API.get("/movies/"+showtime.movieId)
+                    const hall = await API.get("/halls/"+showtime.hallId)
+                    return {
+                        ...showtime,
+                        cinemaName: cinema.data.name,
+                        movieName: movie.data.title,
+                        hallName: hall.data.name,
+                    }
+                }
+                return  item
+            })
+        )
+        setShowtimes([...newShowtimes])
+    }
+
     useEffect(() => {
         const getShowtimes = async () => {
             try {
@@ -69,7 +109,7 @@ export const AdminShowtimesPage = () => {
     return (
         <div style={{color:"white", marginTop:"100px"}}>
             <h1 align="center">Halls</h1>
-            <ShowtimesDialog  showtime={nullShowtime} method="POST"/>
+            <ShowtimesDialog  create={handleCreate} showtime={nullShowtime} method="POST"/>
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -98,7 +138,7 @@ export const AdminShowtimesPage = () => {
                                     <TableCell align="right">{showtime.startAt}</TableCell>
                                     <TableCell align="right">{showtime.price}</TableCell>
                                     <TableCell align="right">
-                                        <ShowtimesDialog showtime={showtime} method="PUT"/>
+                                        <ShowtimesDialog update={handleUpdate} showtime={showtime} method="PUT"/>
                                     </TableCell>
                                     <TableCell align="right">
                                         <Button

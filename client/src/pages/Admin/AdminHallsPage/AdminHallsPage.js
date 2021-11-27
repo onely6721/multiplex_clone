@@ -16,6 +16,12 @@ import moment from "moment";
 import {TablePaginationActions} from "../TablePaginationActions";
 
 
+const nullHall = {
+    rows: null,
+    columns: null,
+    cinema: null,
+    name: null
+}
 
 export const AdminHallsPage = () => {
     const [halls, setHalls] = useState([])
@@ -23,8 +29,36 @@ export const AdminHallsPage = () => {
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const handleDelete = async (hall) => {
+        setHalls(
+            halls.filter((item) => {
+                if(item._id != hall._id)
+                    return item
+        }))
         await API.delete("/halls/"+hall._id)
     }
+
+    const handleCreate = async (hall) => {
+        const cinema = await API.get("/cinemas/"+hall.cinema)
+        setHalls([...halls, {...hall, cinemaName: cinema.data.name}])
+    }
+
+    const handleUpdate = async (hall) => {
+
+        const newHalls =  await Promise.all(
+            halls.map(async (item, index) => {
+                if (item._id == hall._id){
+                    const cinema = await  API.get("/cinemas/"+hall.cinema)
+                    return {
+                        ...hall,
+                        cinemaName: cinema.data.name
+                    }
+                }
+                return  item
+            })
+        )
+        setHalls([...newHalls])
+    }
+
     useEffect(() => {
         const getHalls = async () => {
             try {
@@ -56,6 +90,7 @@ export const AdminHallsPage = () => {
     return (
         <div style={{color:"white", marginTop:"100px"}}>
             <h1 align="center">Halls</h1>
+            <HallsDialog  create={handleCreate} hall={nullHall} method="POST"/>
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -78,7 +113,7 @@ export const AdminHallsPage = () => {
                                     <TableCell align="right">{hall.rows}</TableCell>
                                     <TableCell align="right">{hall.columns}</TableCell>
                                     <TableCell align="right">
-                                        <HallsDialog hall={hall} method="PUT"/>
+                                        <HallsDialog  update={handleUpdate} hall={hall} method="PUT"/>
                                     </TableCell>
                                     <TableCell align="right">
                                         <Button

@@ -12,6 +12,7 @@ import {useState} from "react";
 import {DatePicker, LocalizationProvider} from '@mui/lab';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import {API} from "../../../API/api";
+import {create} from "@mui/material/styles/createTransitions";
 
 const names = [
     'Страшилка',
@@ -74,7 +75,9 @@ export const MoviesDialog = props => {
                 headers: {
                     'content-type': 'multipart/form-data'
                 }
+
             })
+            props.create(response.data)
             console.log(response.data)
         }
         if(props.method === "PUT") {
@@ -83,6 +86,7 @@ export const MoviesDialog = props => {
                     'content-type': 'multipart/form-data'
                 }
             })
+            props.update(response.data)
             console.log(response.data)
         }
         setOpen(false);

@@ -82,10 +82,12 @@ export const ShowtimesDialog = props => {
 
         if(props.method === "POST") {
             const response = await API.post("/showtimes/create",formData)
+            props.create(response.data)
             console.log(response.data)
         }
         if(props.method === "PUT") {
             const response = await API.put("/showtimes/" + props.showtime._id, formData)
+            props.update(response.data)
             console.log(response.data)
         }
         setOpen(false);

@@ -44,6 +44,7 @@ export const CinemasDialog = props => {
                     'content-type': 'multipart/form-data'
                 }
             })
+            props.create(response.data)
             console.log(response.data)
         }
         if(props.method === "PUT") {
@@ -52,6 +53,7 @@ export const CinemasDialog = props => {
                     'content-type': 'multipart/form-data'
                 }
             })
+            props.update(response.data)
             console.log(response.data)
         }
         setOpen(false);

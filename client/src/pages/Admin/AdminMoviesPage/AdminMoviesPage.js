@@ -41,7 +41,27 @@ export const AdminMoviesPage = () => {
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const handleDelete = async (movie) => {
+        setMovies(
+            movies.filter((item) => {
+            if(item._id != movie._id)
+                return item
+        }))
         await API.delete("/movies/"+movie._id)
+    }
+
+    const handleCreate = async (movie) => {
+        setMovies([...movies, movie])
+    }
+
+    const handleUpdate = async (movie) => {
+
+          const newMovies = movies.map((item, index) => {
+              if (item._id == movie._id) {
+                  return movie
+              }
+              return  item
+          })
+         setMovies([...newMovies])
     }
     useEffect(() => {
        const getMovies = async () => {
@@ -65,7 +85,9 @@ export const AdminMoviesPage = () => {
     };
     return (
         <div style={{color:"white", marginTop:"100px"}}>
-            <h1 align="center">Films <MoviesDialog method="POST" movie={nullMovie}/></h1>
+            <h1 align="center">Films
+                <MoviesDialog create={handleCreate} method="POST" movie={nullMovie}/>
+            </h1>
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -98,7 +120,7 @@ export const AdminMoviesPage = () => {
                                     <TableCell align="right">{moment(movie.endDate).format("YYYY-MM-DD")}</TableCell>
                                     <TableCell align="right">{movie.duration}</TableCell>
                                     <TableCell align="right">
-                                        <MoviesDialog movie={movie} method="PUT"/>
+                                        <MoviesDialog update={handleUpdate} movie={movie} method="PUT"/>
                                     </TableCell>
                                     <TableCell align="right">
                                         <Button

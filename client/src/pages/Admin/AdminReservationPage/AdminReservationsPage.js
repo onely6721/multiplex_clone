@@ -14,7 +14,12 @@ import {
 import {TablePaginationActions} from "../TablePaginationActions";
 import {ReservationDialog} from "./ReservationsDialog";
 
-
+const nullReservation = {
+    showtime: "61a2323b94e07675d9110d14",
+    row: null,
+    column: null,
+    owner: null
+}
 
 export const AdminReservationsPage = () => {
     const [reservations, setReservations] = useState([])
@@ -22,8 +27,36 @@ export const AdminReservationsPage = () => {
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const handleDelete = async (reservation) => {
+        setReservations(
+            reservations.filter((item) => {
+                if(item._id != reservation._id)
+                    return item
+            }))
         await API.delete("/reservations/"+reservation._id)
     }
+
+    const handleCreate = async (reservation) => {
+        const user = await API.get("/users/"+reservation.owner)
+        setReservations([...reservations, {...reservation, userName: user.data.username}])
+    }
+
+    const handleUpdate = async (reservation) => {
+        const newReservations =  await Promise.all(
+            reservations.map(async (item, index) => {
+                if (item._id == reservation._id){
+                    const user = await API.get("/users/"+reservation.owner)
+                    return {
+                        ...reservation,
+                        userName: user.data.username
+                    }
+                }
+                return  item
+            })
+        )
+        setReservations([...newReservations])
+
+    }
+
     useEffect(() => {
         const getReservations = async () => {
             try {
@@ -54,6 +87,11 @@ export const AdminReservationsPage = () => {
     return (
         <div style={{color:"white", marginTop:"100px"}}>
             <h1 align="center">Halls</h1>
+            <ReservationDialog
+                create={handleCreate}
+                reservation={nullReservation}
+                method="POST"
+            />
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -76,7 +114,12 @@ export const AdminReservationsPage = () => {
                                     <TableCell align="right">{reservation.column}</TableCell>
                                     <TableCell align="right">{reservation.userName}</TableCell>
                                     <TableCell align="right">
-                                        <ReservationDialog reservation={reservation} method="PUT"/>
+                                        <ReservationDialog
+                                            update={handleUpdate}
+                                            create={handleCreate}
+                                            reservation={reservation}
+                                            method="PUT"
+                                        />
                                     </TableCell>
                                     <TableCell align="right">
                                         <Button

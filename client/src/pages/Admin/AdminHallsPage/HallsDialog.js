@@ -51,10 +51,12 @@ export const HallsDialog = props => {
         if(props.method === "POST") {
             const response = await API.post("/halls/create",formData)
             console.log(response.data)
+            props.create(response.data)
         }
         if(props.method === "PUT") {
             const response = await API.put("/halls/" + props.hall._id,formData)
             console.log(response.data)
+            props.update(response.data)
         }
         setOpen(false);
     };
