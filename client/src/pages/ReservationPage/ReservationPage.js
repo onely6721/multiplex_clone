@@ -1,12 +1,13 @@
-import generateArray from "../tools/GenerateArray";
-import {Button, Container, Typography} from "@mui/material";
+import generateArray from "../../tools/GenerateArray";
+import {Alert, Button, Container, Typography} from "@mui/material";
 import {useContext, useEffect, useState} from "react";
-import {API} from "../API/api";
+import {API} from "../../API/api";
 import {useParams} from "react-router-dom";
 import {makeStyles} from "@mui/styles";
-import {Seat} from "../components/Seat";
+import {Seat} from "../../components/Seat/Seat";
 import {Drawer} from "@mui/material";
-import {AuthContext} from "../context/AuthContext";
+import {AuthContext} from "../../context/AuthContext";
+import {ErrorAlert} from "../../components/Alerts/ErrorAlert";
 
 const useStyles = makeStyles({
     hall: {
@@ -39,7 +40,35 @@ export const ReservationPage = props => {
     const [reservations, setReservations] = useState([])
     const [reservedSeats, setReservedSeats] = useState([])
 
+    const handleConfirm =  async () => {
+        try {
+            if(!isAuth) {
+              alert("Авторизуйтесь")
+              return
+            }
+            if(reservations.length === 0)
+                return
+            await Promise.all(
+                reservations.map(async (reservation, i) => {
+                    const formData = new URLSearchParams()
+                    formData.append('row', reservation.row)
+                    formData.append('column', reservation.column)
+                    formData.append('showtime', id)
+                    const response = await API.post("/reservations/create",formData, {
+                        headers: {
+                            "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                        }
+                    })
+                    console.log(response.status)
+                    setReservedSeats([...reservedSeats, response.data])
+                })
+            )
+            window.location.reload()
+        } catch (e) {
+           console.log(e.response.data.message)
+        }
 
+    }
     const addReservation = (e,row, column) => {
         const candidate = reservations.find((reservation) =>  {
             if (reservation.row === row && reservation.column === column)
@@ -163,23 +192,7 @@ export const ReservationPage = props => {
                     <Button
                         variant="outlined"
                         className={classes.buttonCheckout}
-                        onClick={() => {
-                            if(!isAuth)
-                                return
-                            if(reservations.length === 0)
-                                return
-                            reservations.map(async (reservation, i) => {
-                                const formData = new URLSearchParams()
-                                formData.append('row', reservation.row)
-                                formData.append('column', reservation.column)
-                                formData.append('showtime', id)
-                                const response = await API.post("/reservations/create",formData, {
-                                     headers: {
-                                        "Authorization": `Bearer ${localStorage.getItem('token')}`,
-                                      }
-                                })
-                            })
-                        }}
+                        onClick={handleConfirm}
                     >
                         Замовити
                     </Button>

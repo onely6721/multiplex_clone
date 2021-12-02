@@ -8,7 +8,7 @@ import {useContext, useEffect, useState} from "react";
 import {API} from "../../API/api";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
-import {LoginModal} from "../LoginModal";
+import {LoginModal} from "../Modals/LoginModal";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {AdminMenu} from "./AdminMenu";
 import {SelectCinema} from "./SelectCinema";

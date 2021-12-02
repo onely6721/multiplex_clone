@@ -3,59 +3,11 @@ import Slider from "react-slick";
 import {Link} from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {API} from "../API/api";
-import { makeStyles } from "@mui/styles"
+import {API} from "../../API/api";
 import Container from "@mui/material/Container";
 import {Typography} from "@mui/material";
-
-const useStyles = makeStyles({
-    title: {
-        position: "absolute",
-        top: "40%",
-        color: "white",
-    },
-    movieImage: {
-        '&:hover': {
-            background:` rgba("0, 0, 0, 0.5")`,
-        }
-    },
-    slide: {
-        zIndex: -1000,
-    },
-
-
-});
-const settings = {
-    centerMode: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    swipeToSlide: true,
-    adaptiveHeight: true,
-    dots: true,
-
-    responsive: [
-        {
-            breakpoint: 1600,
-            settings: {
-                slidesToShow: 3
-            }
-        },
-        {
-            breakpoint: 1250,
-            settings: {
-                slidesToShow: 2
-            }
-        },
-        {
-            breakpoint: 750,
-            settings: {
-                slidesToShow: 1
-            }
-        }
-    ]
-};
-
+import {useStyles} from "./Styles";
+import {settings} from "./SliderSettings";
 
 
 export const MovieSlider  = () => {

@@ -5,8 +5,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {TextField} from "@mui/material";
 import {useContext, useState} from "react";
-import {API} from "../API/api";
-import {AuthContext} from "../context/AuthContext";
+import {API} from "../../API/api";
+import {AuthContext} from "../../context/AuthContext";
 
 const style = {
     position: 'absolute',

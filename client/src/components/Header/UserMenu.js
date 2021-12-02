@@ -2,7 +2,7 @@ import {IconButton, Menu} from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import MenuItem from "@mui/material/MenuItem";
 import {Link} from "react-router-dom";
-import {LoginModal} from "../LoginModal";
+import {LoginModal} from "../Modals/LoginModal";
 import {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext";
 

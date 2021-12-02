@@ -4,22 +4,9 @@ import {Button, Grid} from "@mui/material"
 import moment from "moment";
 import {makeStyles} from "@mui/styles"
 import {useEffect, useState} from "react";
-import {API} from "../API/api";
+import {API} from "../../API/api";
+import {useStyles} from "./Styles";
 
-
-const useStyles = makeStyles({
-    container : {
-        marginTop: 100,
-        color:"white"
-    },
-    poster:{
-        boxShadow: "3px 3px 5px 6px #ccc"
-    },
-    description: {
-        color: "silver"
-    },
-
-});
 
 
 
@@ -61,7 +48,7 @@ export const MovieDescription = props => {
                     </Typography>
                     <Typography>{movie.ratingIMDB}</Typography>
                     <Typography>{movie.director}</Typography>
-                    <Typography>/</Typography>
+                    <Typography>{ movie.genre  && movie.genre.map((item) => " " +item)}</Typography>
                     <Typography>{movie.language}</Typography>
                     <Typography>{movie.duration}</Typography>
                 </Grid>

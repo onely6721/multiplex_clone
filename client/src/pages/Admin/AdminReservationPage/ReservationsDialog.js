@@ -49,6 +49,7 @@ export const ReservationDialog = props => {
         }
         if(props.method === "PUT") {
             const response = await API.put("/reservations/" + props.reservation._id,formData)
+            console.log(response.data)
             props.update(response.data)
 
 
@@ -62,7 +63,7 @@ export const ReservationDialog = props => {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            <Button onClick={handleClickOpen}>
                 {props.method === "POST" ? `Create` : `Edit`}
             </Button>
             <Dialog open={open} onClose={handleClose}>

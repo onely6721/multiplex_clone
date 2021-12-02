@@ -57,9 +57,7 @@ code {
   z-index:1;
 }
 
-.slick-slide:hover{
-  background: black;
-}
+
 
 .slick-prev, .slick-next{
   height: 50px !important;

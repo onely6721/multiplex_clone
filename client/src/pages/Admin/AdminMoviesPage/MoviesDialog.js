@@ -98,7 +98,7 @@ export const MoviesDialog = props => {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            <Button onClick={handleClickOpen}>
                 {props.method === "POST" ? `Create` : `Edit`}
             </Button>
             <Dialog open={open} onClose={handleClose}>

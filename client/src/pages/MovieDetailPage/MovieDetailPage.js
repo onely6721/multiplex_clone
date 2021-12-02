@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
-import {MovieDescription} from "../components/MovieDescription";
-import {SelectShowtime} from "../components/SelectShowtime";
+import {MovieDescription} from "../../components/MovieDescription/MovieDescription";
+import {SelectShowtime} from "../../components/SelectShowtime/SelectShowtime";
 
 
 

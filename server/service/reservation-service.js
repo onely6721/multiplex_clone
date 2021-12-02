@@ -45,11 +45,18 @@ class ReservationService {
 
 
     async update(id, reservation) {
-        const newReservation = await ReservationModel.findByIdAndUpdate(id, reservation)
+        const newReservation = await ReservationModel.findByIdAndUpdate(id, reservation, {new: true})
         return newReservation
     }
 
     async create(reservation) {
+        const candidate = await ReservationModel.findOne({
+            showtime: reservation.showtime,
+            row: reservation.row,
+            column: reservation.column
+        })
+        if( candidate)
+            throw new Error("Уже забронировано!")
         const newReservation = await ReservationModel.create(reservation)
         return newReservation
     }

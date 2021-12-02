@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import {useEffect, useState} from "react";
 import moment from "moment";
-import {API} from "../API/api";
+import {API} from "../../../API/api";
 
 
 
@@ -77,7 +77,6 @@ export const ShowReservationPage = () => {
                                     <TableCell align="right">{reservation.startAt}</TableCell>
                                     <TableCell align="right">{reservation.row}</TableCell>
                                     <TableCell align="right">{reservation.column}</TableCell>
-                                    <TableCell align="right">{reservation.price}</TableCell>
                                     <TableCell align="right">{reservation.price}</TableCell>
 
                                     <TableCell align="right">
