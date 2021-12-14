@@ -14,9 +14,8 @@ function App() {
     useEffect(() => {
         if (token) {
             const jwtPayload =  parseJwt(token)
-            if (jwtPayload.exp > Date.now() / 1000) {
+            if (jwtPayload.exp < Date.now() / 1000) {
                 setToken(null)
-                console.log(jwtPayload.exp)
                 localStorage.removeItem('token')
                 setAuth(false)
             } else {

@@ -43,7 +43,7 @@ export const MoviesDialog = props => {
         formData.append('title', movie.title)
         formData.append('description', movie.description)
         formData.append('ratingIMDB', movie.ratingIMDB)
-        formData.append('releaseDate', movie.startDate)
+        formData.append('releaseDate', movie.releaseDate)
         formData.append('endDate', movie.endDate)
         formData.append('language', movie.language)
         if(file)
@@ -188,9 +188,9 @@ export const MoviesDialog = props => {
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
                             label="Дата выхода"
-                            value={movie.startDate}
+                            value={movie.releaseDate}
                             onChange={(newValue) => {
-                               setMovie({...movie, startDate: newValue})
+                               setMovie({...movie, releaseDate: newValue})
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />

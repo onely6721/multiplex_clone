@@ -11,12 +11,16 @@ module.exports = (req, res, next) => {
             return res.status(401).json({ message: 'No auth' })
         }
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        console.log(decoded)
         if( decoded.role === 'admin') {
             req.user = decoded
             next()
+        } else
+        {
+            res.status(401).json({ message: 'Нету прав' })
         }
 
-        res.status(401).json({ message: 'Нету прав' })
+
     } catch (e) {
         res.status(401).json({ message: 'Неавторизованый' })
     }
