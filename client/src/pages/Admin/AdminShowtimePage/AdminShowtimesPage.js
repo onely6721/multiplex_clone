@@ -11,7 +11,6 @@ import {
     TableHead, TablePagination,
     TableRow
 } from "@mui/material";
-import moment from "moment";
 import {TablePaginationActions} from "../TablePaginationActions";
 import {ShowtimesDialog} from "./ShowtimesDialog";
 
@@ -34,7 +33,7 @@ export const AdminShowtimesPage = () => {
     const handleDelete = async (showtime) => {
         setShowtimes(
             showtimes.filter((item) => {
-                if(item._id != showtime._id)
+                if(item._id !== showtime._id)
                     return item
         }))
         await API.delete("/showtimes/"+showtime._id)
@@ -57,7 +56,7 @@ export const AdminShowtimesPage = () => {
 
         const newShowtimes =  await Promise.all(
             showtimes.map(async (item, index) => {
-                if (item._id == showtime._id){
+                if (item._id === showtime._id){
                     const cinema = await API.get("/cinemas/"+showtime.cinemaId)
                     const movie = await API.get("/movies/"+showtime.movieId)
                     const hall = await API.get("/halls/"+showtime.hallId)

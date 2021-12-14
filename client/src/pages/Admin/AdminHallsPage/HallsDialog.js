@@ -3,14 +3,11 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogContentText,
-    DialogTitle, FormControl, Input, InputLabel,
+    DialogTitle, FormControl, InputLabel,
     MenuItem, OutlinedInput, Select,
     TextField
 } from "@mui/material";
 import {useEffect, useState} from "react";
-import {DatePicker, LocalizationProvider} from '@mui/lab';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import {API} from "../../../API/api";
 
 
@@ -49,7 +46,7 @@ export const HallsDialog = props => {
         formData.append('cinema', cinema)
 
         if(props.method === "POST") {
-            const response = await API.post("/halls/create",formData)
+            const response = await API.post("/halls/",formData)
             console.log(response.data)
             props.create(response.data)
         }

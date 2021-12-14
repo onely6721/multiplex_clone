@@ -3,7 +3,7 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogTitle, FormControl, Input, InputLabel,
+    DialogTitle, FormControl, InputLabel,
     MenuItem, OutlinedInput, Select,
     TextField
 } from "@mui/material";
@@ -44,7 +44,7 @@ export const ReservationDialog = props => {
         formData.append('owner', user)
 
         if(props.method === "POST") {
-            const response = await API.post("/reservations/create",formData)
+            const response = await API.post("/reservations/",formData)
             props.create(response.data)
         }
         if(props.method === "PUT") {

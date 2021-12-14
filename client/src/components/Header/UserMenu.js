@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {LoginModal} from "../Modals/LoginModal";
 import {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext";
+import {RegistrationModal} from "../Modals/RegistrationModal";
 
 
 const PaperProps = {
@@ -37,6 +38,7 @@ const PaperProps = {
 
 export const UserMenu = props => {
     const [openLogin, setOpenLogin] = useState(false)
+    const [openRegistration, setOpenRegistration] = useState(false)
     const {isAuth, setAuth} = useContext(AuthContext)
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl);
@@ -65,7 +67,7 @@ export const UserMenu = props => {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
-                PaperProps
+                PaperProps={PaperProps}
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
@@ -94,20 +96,33 @@ export const UserMenu = props => {
                         :
                         <>
                             <MenuItem
-                                onClick={()=>setOpenLogin(!openLogin) && handleClose()}
+                                onClick={()=> {
+                                    handleClose()
+                                    setOpenLogin(!openLogin)
+                                }}
                             >
-                                Login
+                                Увійти
                             </MenuItem>
-                            <MenuItem onClick={handleClose}>
-                                Registration
+                            <MenuItem
+                                onClick={() => {
+                                    handleClose()
+                                    setOpenRegistration(!openRegistration)
+                                }}
+                            >
+                                Реєстрація
                             </MenuItem>
                         </>
                 }
-                <LoginModal
-                    open={openLogin}
-                    close={() => setOpenLogin(false)}
-                />
             </Menu>
+            <LoginModal
+                open={openLogin}
+                close={() => setOpenLogin(false)}
+            />
+            <RegistrationModal
+                open={openRegistration}
+                close={() => setOpenRegistration(false)}
+            />
+
         </>
     )
 }

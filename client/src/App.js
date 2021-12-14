@@ -4,7 +4,7 @@ import {Header} from "./components/Header/Header";
 import {AuthContext} from "./context/AuthContext";
 import {useRoutes} from "./routes";
 import {useEffect, useState} from "react";
-import {parseJwt} from "./tools/ParseJWT";
+import {parseJwt} from "./utils/ParseJWT";
 
 
 function App() {
@@ -14,9 +14,11 @@ function App() {
     useEffect(() => {
         if (token) {
             const jwtPayload =  parseJwt(token)
-            if (jwtPayload < Date.now() / 1000) {
+            if (jwtPayload.exp > Date.now() / 1000) {
                 setToken(null)
-                localStorage.setItem('token', null)
+                console.log(jwtPayload.exp)
+                localStorage.removeItem('token')
+                setAuth(false)
             } else {
                 setAuth(true)
             }

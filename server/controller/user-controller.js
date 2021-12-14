@@ -8,7 +8,7 @@ class UserController{
             res.status(200).json(userData)
 
         } catch(e) {
-            res.json({message: e.message})
+            res.status(400).json({message: e.message})
         }
 
     }

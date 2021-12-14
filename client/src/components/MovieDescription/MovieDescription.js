@@ -1,8 +1,7 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import {Button, Grid} from "@mui/material"
+import {Grid} from "@mui/material"
 import moment from "moment";
-import {makeStyles} from "@mui/styles"
 import {useEffect, useState} from "react";
 import {API} from "../../API/api";
 import {useStyles} from "./Styles";
@@ -30,7 +29,6 @@ export const MovieDescription = props => {
             <Grid container spacing={2}>
                 <Grid item  md={3} className={classes.description}>
                     <img src={link} className={classes.poster} alt=""/>
-                    <Button variant="outlined" color="primary">Дивись трейлеру</Button>
                 </Grid>
                 <Grid item  md={2} >
                     <Typography>Період прокату:</Typography>
@@ -53,6 +51,7 @@ export const MovieDescription = props => {
                     <Typography>{movie.duration}</Typography>
                 </Grid>
             </Grid>
+            <br/>
             <Typography className={classes.description}>{movie.description}</Typography>
         </Container>
     )

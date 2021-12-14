@@ -1,33 +1,13 @@
-import generateArray from "../../tools/GenerateArray";
-import {Alert, Button, Container, Typography} from "@mui/material";
+import generateArray from "../../../utils/GenerateArray";
+import { Button, Container, Typography} from "@mui/material";
 import {useContext, useEffect, useState} from "react";
-import {API} from "../../API/api";
+import {API} from "../../../API/api";
 import {useParams} from "react-router-dom";
-import {makeStyles} from "@mui/styles";
-import {Seat} from "../../components/Seat/Seat";
+import {Seat} from "../../../components/Seat/Seat";
 import {Drawer} from "@mui/material";
-import {AuthContext} from "../../context/AuthContext";
-import {ErrorAlert} from "../../components/Alerts/ErrorAlert";
+import {AuthContext} from "../../../context/AuthContext";
+import {useStyles} from "./Styles";
 
-const useStyles = makeStyles({
-    hall: {
-        display: "grid",
-        gridColumnGap: "30px",
-        gridRowGap:"10px",
-        padding: "50px",
-    },
-    movieTitle: {
-        color: "orange"
-    },
-    reservationCheckout: {
-      padding: "10px"
-    },
-    buttonCheckout: {
-        color:"red",
-        borderColor: "red !important",
-    }
-
-});
 
 export const ReservationPage = props => {
     const id = useParams().id
@@ -54,7 +34,7 @@ export const ReservationPage = props => {
                     formData.append('row', reservation.row)
                     formData.append('column', reservation.column)
                     formData.append('showtime', id)
-                    const response = await API.post("/reservations/create",formData, {
+                    const response = await API.post("/reservations/",formData, {
                         headers: {
                             "Authorization": `Bearer ${localStorage.getItem('token')}`,
                         }

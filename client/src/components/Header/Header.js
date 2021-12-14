@@ -1,24 +1,27 @@
-import {Avatar, AppBar, Toolbar, Typography, IconButton, Menu, Box, Button} from "@mui/material";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import ListSubheader from '@mui/material/ListSubheader';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { AppBar, Toolbar, Box} from "@mui/material";
 import {useContext, useEffect, useState} from "react";
-import {API} from "../../API/api";
-import {Link} from "react-router-dom";
-import {AuthContext} from "../../context/AuthContext";
-import {LoginModal} from "../Modals/LoginModal";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {AdminMenu} from "./AdminMenu";
 import {SelectCinema} from "./SelectCinema";
 import {Logo} from "./Logo";
 import {UserMenu} from "./UserMenu";
+import {parseJwt} from "../../utils/ParseJWT";
+import {AuthContext} from "../../context/AuthContext";
 
 
 export const Header = () => {
 
-
+    const [role, setRole] = useState(null)
+    const {isAuth} = useContext(AuthContext)
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        if (token) {
+            const jwtPayload =  parseJwt(token)
+            console.log(jwtPayload)
+            setRole(jwtPayload.role)
+        } else {
+            setRole(null)
+        }
+    }, [isAuth])
 
     return(
         <Box sx={{ flexGrow: 1 }}>
@@ -29,7 +32,7 @@ export const Header = () => {
                 <Toolbar>
                     <Logo/>
                     <SelectCinema/>
-                    <AdminMenu/>
+                    {role === 'admin' && <AdminMenu/>}
                     <UserMenu/>
                 </Toolbar>
             </AppBar>

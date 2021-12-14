@@ -24,7 +24,7 @@ export const ShowReservationPage = () => {
 
     useEffect(() => {
        const getReservations = async () => {
-             const response = await API.get("/reservations/forUser",
+             const response = await API.get("/reservations/me",
                  {
                      headers: {
                          "Authorization": `Bearer ${localStorage.getItem('token')}`,

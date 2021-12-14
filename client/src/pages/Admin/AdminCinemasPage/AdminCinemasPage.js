@@ -30,7 +30,7 @@ export const AdminCinemasPage = () => {
     const handleDelete = async (cinema) => {
         setCinemas(
             cinemas.filter((item) => {
-                if(item._id != cinema._id)
+                if(item._id !== cinema._id)
                     return item
             }))
         await API.delete("/cinemas/"+cinema._id)
@@ -43,7 +43,7 @@ export const AdminCinemasPage = () => {
     const handleUpdate = async (cinema) => {
 
         const newCinemas = cinemas.map((item, index) => {
-            if (item._id == cinema._id) {
+            if (item._id === cinema._id) {
                 return cinema
             }
             return  item

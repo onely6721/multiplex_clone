@@ -1,7 +1,6 @@
 import {
-    Box,
     Button,
-    Container, IconButton, Input,
+    Container,
     Paper,
     Table,
     TableBody,
@@ -11,12 +10,6 @@ import {
     TableRow, useTheme
 } from "@mui/material";
 
-import FirstPageIcon from '@mui/icons-material/FirstPage';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import LastPageIcon from '@mui/icons-material/LastPage'
-
-import PropTypes from 'prop-types';
 import {useEffect, useState} from "react";
 import moment from "moment";
 import {API} from "../../../API/api";
@@ -43,7 +36,7 @@ export const AdminMoviesPage = () => {
     const handleDelete = async (movie) => {
         setMovies(
             movies.filter((item) => {
-            if(item._id != movie._id)
+            if(item._id !== movie._id)
                 return item
         }))
         await API.delete("/movies/"+movie._id)
@@ -56,7 +49,7 @@ export const AdminMoviesPage = () => {
     const handleUpdate = async (movie) => {
 
           const newMovies = movies.map((item, index) => {
-              if (item._id == movie._id) {
+              if (item._id === movie._id) {
                   return movie
               }
               return  item

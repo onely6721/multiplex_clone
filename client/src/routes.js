@@ -1,14 +1,13 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import {
     Routes,
     Route,
     Navigate,
-    Link
+
 } from "react-router-dom";
-import {MainPage} from "./pages/MainPage/MainPage";
-import {MovieDetailPage} from "./pages/MovieDetailPage/MovieDetailPage";
-import {ReservationPage} from "./pages/ReservationPage/ReservationPage";
-import {AuthContext} from "./context/AuthContext";
+import {MainPage} from "./pages/Public/MainPage/MainPage";
+import {MovieDetailPage} from "./pages/Public/MovieDetailPage/MovieDetailPage";
+import {ReservationPage} from "./pages/Public/ReservationPage/ReservationPage";
 import {ShowReservationPage} from "./pages/User/ShowReservationPage/ShowReservationPage";
 import {AdminPage} from "./pages/Admin/AdminPage";
 import {AdminMoviesPage} from "./pages/Admin/AdminMoviesPage/AdminMoviesPage";

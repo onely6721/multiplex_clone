@@ -1,5 +1,4 @@
-import {Button, Drawer, List, ListItem, Typography} from "@mui/material";
-import {API} from "../../API/api";
+import {Button, Drawer, List, ListItem} from "@mui/material";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 

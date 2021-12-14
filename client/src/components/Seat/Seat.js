@@ -18,7 +18,7 @@ export const Seat = props => {
                     color:
                         props.disabled
                             ?
-                            "grey"
+                                "grey"
                             :
                                 selected ? green : "#fcc93d",
                     borderColor:

@@ -1,6 +1,5 @@
-import {Alert, Collapse, IconButton, Snackbar} from "@mui/material";
+import {Alert, Snackbar} from "@mui/material";
 import {useState} from "react";
-import CloseIcon from '@mui/icons-material/Close';
 
 export const ErrorAlert = props => {
     const [open, setOpen] = useState(true)

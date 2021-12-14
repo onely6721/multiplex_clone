@@ -3,14 +3,11 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogContentText,
     DialogTitle, FormControl, Input, InputLabel,
     MenuItem, OutlinedInput, Select,
     TextField
 } from "@mui/material";
 import {useState} from "react";
-import {DatePicker, LocalizationProvider} from '@mui/lab';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import {API} from "../../../API/api";
 
 const cities = ["Chernihiv", "Odessa", "Kharkiv", "Lviv", "Kiev"]
@@ -39,7 +36,7 @@ export const CinemasDialog = props => {
         formData.append('image', file)
 
         if(props.method === "POST") {
-            const response = await API.post("/cinemas/create",formData, {
+            const response = await API.post("/cinemas/",formData, {
                 headers: {
                     'content-type': 'multipart/form-data'
                 }

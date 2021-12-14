@@ -12,7 +12,6 @@ import {
     TableHead, TablePagination,
     TableRow
 } from "@mui/material";
-import moment from "moment";
 import {TablePaginationActions} from "../TablePaginationActions";
 
 
@@ -31,7 +30,7 @@ export const AdminHallsPage = () => {
     const handleDelete = async (hall) => {
         setHalls(
             halls.filter((item) => {
-                if(item._id != hall._id)
+                if(item._id !== hall._id)
                     return item
         }))
         await API.delete("/halls/"+hall._id)
@@ -46,7 +45,7 @@ export const AdminHallsPage = () => {
 
         const newHalls =  await Promise.all(
             halls.map(async (item, index) => {
-                if (item._id == hall._id){
+                if (item._id === hall._id){
                     const cinema = await  API.get("/cinemas/"+hall.cinema)
                     return {
                         ...hall,

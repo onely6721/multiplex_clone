@@ -3,7 +3,6 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogContentText,
     DialogTitle, FormControl, Input, InputLabel,
     MenuItem, OutlinedInput, Select,
     TextField
@@ -12,30 +11,18 @@ import {useState} from "react";
 import {DatePicker, LocalizationProvider} from '@mui/lab';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import {API} from "../../../API/api";
-import {create} from "@mui/material/styles/createTransitions";
 
 const names = [
-    'Страшилка',
-    'Камедия',
+    'Жахи',
+    'Комедія',
     'Драма',
     'Рофлянка',
-    'УУУУ',
-    '22',
-    '23',
 ];
 
 export const MoviesDialog = props => {
     const [open, setOpen] = useState(false);
+    const [movie, setMovie] = useState(props.movie)
     const [genre, setGenre] = useState(props.movie.genre);
-    const [title, setTitle] = useState(props.movie.title)
-    const [description, setDescription] = useState(props.movie.description)
-    const [language, setLanguage] = useState(props.movie.language)
-    const [duration, setDuration] = useState(props.movie.duration)
-    const [director, setDirector] = useState(props.movie.director)
-    const [rating, setRating] = useState(props.movie.ratingIMDB)
-    const [cast, setCast] = useState(props.movie.cast)
-    const [startDate, setStartDate] = useState(props.movie.releaseDate);
-    const [endDate, setEndDate] = useState(props.movie.endDate);
     const [file, setFile] = useState(null)
 
     const handleChange = (event) => {
@@ -53,25 +40,25 @@ export const MoviesDialog = props => {
     const handleCreate = async () => {
 
         const formData = new FormData()
-        formData.append('title', title)
-        formData.append('description', description)
-        formData.append('ratingIMDB', rating)
-        formData.append('releaseDate', startDate)
-        formData.append('endDate', endDate)
-        formData.append('language', language)
+        formData.append('title', movie.title)
+        formData.append('description', movie.description)
+        formData.append('ratingIMDB', movie.ratingIMDB)
+        formData.append('releaseDate', movie.startDate)
+        formData.append('endDate', movie.endDate)
+        formData.append('language', movie.language)
         if(file)
             formData.append('image', file)
         else
             formData.append('image', props.movie.image)
-        formData.append('duration', duration)
-        formData.append('director', director)
-        formData.append('cast', cast)
+        formData.append('duration', movie.duration)
+        formData.append('director', movie.director)
+        formData.append('cast', movie.cast)
         genre.map((g) => {
             formData.append('genre', g)
         })
 
         if(props.method === "POST") {
-            const response = await API.post("/movies/create",formData, {
+            const response = await API.post("/movies/",formData, {
                 headers: {
                     'content-type': 'multipart/form-data'
                 }
@@ -108,16 +95,16 @@ export const MoviesDialog = props => {
                         margin="dense"
                         id="outlined-helperText"
                         label="Название"
-                        defaultValue={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        defaultValue={movie.title}
+                        onChange={(e) => setMovie({...movie, title: e.target.value })}
                         fullWidth
                     />
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
                         label="Описание"
-                        defaultValue={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        defaultValue={movie.description}
+                        onChange={(e) => setMovie({...movie, description: e.target.value })}
                         fullWidth
 
                     />
@@ -125,16 +112,16 @@ export const MoviesDialog = props => {
                         margin="dense"
                         id="outlined-helperText"
                         label="Рейтинг IMDB"
-                        defaultValue={rating}
-                        onChange={(e) => setRating(e.target.value)}
+                        defaultValue={movie.ratingIMDB}
+                        onChange={(e) => setMovie({...movie, ratingIMDB: e.target.value })}
 
                     />
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
                         label="Режиссер"
-                        defaultValue={director}
-                        onChange={(e) => setDirector(e.target.value)}
+                        defaultValue={movie.director}
+                        onChange={(e) => setMovie({...movie, director: e.target.value })}
                         style={{marginLeft: "20px"}}
 
                     />
@@ -142,24 +129,24 @@ export const MoviesDialog = props => {
                         margin="dense"
                         id="outlined-helperText"
                         label="Бюджет"
-                        onChange={(e) => setCast(e.target.value)}
-                        defaultValue={cast}
+                        onChange={(e) => setMovie({...movie, cast: e.target.value })}
+                        defaultValue={movie.cast}
 
                     />
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
                         label="Длительность"
-                        onChange={(e) => setDuration(e.target.value)}
-                        defaultValue={duration}
+                        onChange={(e) => setMovie({...movie, duration: e.target.value })}
+                        defaultValue={movie.duration}
                         style={{marginLeft: "20px"}}
                     />
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
                         label="Язык"
-                        defaultValue={language}
-                        onChange={(e) => setLanguage(e.target.value)}
+                        defaultValue={movie.language}
+                        onChange={(e) => setMovie({...movie, language: e.target.value })}
                     />
                     <br/>
                     <label htmlFor="contained-button-file">
@@ -201,9 +188,9 @@ export const MoviesDialog = props => {
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
                             label="Дата выхода"
-                            value={startDate}
+                            value={movie.startDate}
                             onChange={(newValue) => {
-                                setStartDate(newValue);
+                               setMovie({...movie, startDate: newValue})
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />
@@ -214,9 +201,9 @@ export const MoviesDialog = props => {
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
                             label="Дата окончания"
-                            value={endDate}
+                            value={movie.endDate}
                             onChange={(newValue) => {
-                                setEndDate(newValue);
+                                setMovie({...movie, endDate: newValue})
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />

@@ -9,6 +9,7 @@ import {API} from "../../API/api";
 import {AuthContext} from "../../context/AuthContext";
 
 const style = {
+    textAlign: "center",
     position: 'absolute',
     top: '50%',
     left: '50%',
@@ -23,24 +24,22 @@ const style = {
 };
 
 export const LoginModal = props => {
-    const [name, setName] = useState()
-    const [password, setPassword] = useState()
-
+    const [userData, setUserData] = useState({})
     const {setToken, setAuth} = useContext(AuthContext)
 
-    const handleLogin = e => {
-        setName(e.target.value)
+    const handleInput = (e) => {
+        setUserData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+        }));
     }
 
-    const handlePassword = e => {
-        setPassword(e.target.value)
-    }
 
     const login = async () => {
         try {
             const formData = new URLSearchParams()
-            formData.append('username', name)
-            formData.append('password', password)
+            formData.append('username', userData.login)
+            formData.append('password', userData.password)
             const response = await API.post("/users/login",formData )
             if(response.data.token){
                 localStorage.setItem("token", response.data.token)
@@ -64,29 +63,34 @@ export const LoginModal = props => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style} >
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Login Form
+                    <Typography align="center" id="modal-modal-title" variant="h6" component="h2">
+                        Вхід
                     </Typography>
                     <TextField
+                        name="login"
                         id="outlined-basic"
-                        label="Login"
+                        label="Ім'я користувача або email"
                         variant="outlined"
-                        style={{padding: "10px"}}
-                        onChange={handleLogin}
+                        style={{marginTop: "20px"}}
+                        onChange={handleInput}
                     />
                     <TextField
+                        name="password"
+                        type="password"
+                        margin="dense"
                         id="outlined-basic"
-                        label="Password"
+                        label="Пароль"
                         variant="outlined"
-                        style={{padding: "10px"}}
-                        onChange={handlePassword}
+                        style={{marginTop: "20px"}}
+                        onChange={handleInput}
                     />
                     <br/>
                   <Button
                       variant="outlined"
                       onClick={login}
+                      style={{marginTop: "20px"}}
                   >
-                      Submit
+                      Увійти
                   </Button>
                 </Box>
             </Modal>

@@ -9,7 +9,8 @@ export const useStyles = makeStyles({
 
     },
     description: {
-        color: "silver"
+        color: "silver",
+        fontSize: "8pt"
     },
 
 });

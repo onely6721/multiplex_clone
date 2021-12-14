@@ -29,7 +29,7 @@ export const AdminReservationsPage = () => {
     const handleDelete = async (reservation) => {
         setReservations(
             reservations.filter((item) => {
-                if(item._id != reservation._id)
+                if(item._id !== reservation._id)
                     return item
             }))
         await API.delete("/reservations/"+reservation._id)
@@ -43,7 +43,7 @@ export const AdminReservationsPage = () => {
     const handleUpdate = async (reservation) => {
         const newReservations =  await Promise.all(
             reservations.map(async (item, index) => {
-                if (item._id == reservation._id){
+                if (item._id === reservation._id){
                     const user = await API.get("/users/"+reservation.owner)
                     return {
                         ...reservation,

@@ -10,7 +10,6 @@ import {API} from "../../API/api";
 export const SelectCinema = props => {
     const cities = ['Chernihiv', 'Kiev', 'Lviv', 'Odessa', 'Kharkiv']
     const [cinemas, setCinemas] = useState([])
-    const [cinema, setCinema] = useState()
 
 
     useEffect(()=> {
@@ -46,16 +45,21 @@ export const SelectCinema = props => {
                 {cities.map((city, i) => {
                     return [
                         <ListSubheader>{city}</ListSubheader>,
-                        cinemas.map((cinema,index) => {
+                        cinemas.filter((cinema,index) => {
                             if(cinema.city === city)
                                 return (
-                                    <MenuItem
-                                        key={cinema._id}
-                                        value={cinema._id}
-                                    >
-                                        {cinema.name}
-                                    </MenuItem>
-                        )})
+                                  cinema
+                                )
+                        }).map((cinema, index) => {
+                            return (
+                                <MenuItem
+                                    key={cinema._id}
+                                    value={cinema._id}
+                                >
+                                    {cinema.name}
+                                </MenuItem>
+                            )
+                        })
                     ]
                 })}
             </Select>

@@ -3,8 +3,7 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogContentText,
-    DialogTitle, FormControl, Input, InputLabel,
+    DialogTitle, FormControl, InputLabel,
     MenuItem, OutlinedInput, Select,
     TextField
 } from "@mui/material";
@@ -18,26 +17,20 @@ import {API} from "../../../API/api";
 
 export const ShowtimesDialog = props => {
     const [open, setOpen] = useState(false);
-    const [startDate, setStartDate] = useState(props.showtime.startDate )
-    const [endDate, setEndDate] = useState(props.showtime.endDate)
-    const [cinema, setCinema] = useState(props.showtime.cinemaId )
-    const [hall, setHall] = useState(props.showtime.hallId)
-    const [movie, setMovie] = useState(props.showtime.movieId )
+    const [showtime, setShowtime] = useState({...props.showtime})
     const [cinemas, setCinemas] = useState([])
     const [movies, setMovies] = useState([])
     const [halls, setHalls] = useState([])
-    const [price, setPrice] = useState(props.showtime.price )
-    const [startAt, setStartAt] = useState(props.showtime.startAt)
 
 
     const handleChangeCinema = (event) => {
-        setCinema(event.target.value)
+        setShowtime({...showtime, cinemaId: event.target.value})
     };
     const handleChangeMovie = (event) => {
-        setMovie(event.target.value)
+        setShowtime({...showtime, movieId: event.target.value})
     };
     const handleChangeHall = (event) => {
-        setHall(event.target.value)
+        setShowtime({...showtime, hallId: event.target.value})
     };
     const handleClickOpen = () => {
         setOpen(true);
@@ -64,24 +57,24 @@ export const ShowtimesDialog = props => {
 
     useEffect(() => {
         const getHalls = async () => {
-            const response = await API.get("/halls/byCinema/" + cinema)
+            const response = await API.get("/halls/byCinema/" + showtime.cinemaId)
             setHalls(response.data)
         }
         getHalls()
-    }, [cinema])
+    }, [showtime.cinema])
     const handleCreate = async () => {
 
         const formData = new URLSearchParams()
-        formData.append('startAt', startAt)
-        formData.append('startDate', startDate)
-        formData.append('endDate', endDate)
-        formData.append('price', price)
-        formData.append('movieId', movie)
-        formData.append('cinemaId', cinema)
-        formData.append('hallId', hall)
+        formData.append('startAt', showtime.startAt)
+        formData.append('startDate', showtime.startDate)
+        formData.append('endDate', showtime.endDate)
+        formData.append('price', showtime.price)
+        formData.append('movieId', showtime.movieId)
+        formData.append('cinemaId', showtime.cinemaId)
+        formData.append('hallId', showtime.hallId)
 
         if(props.method === "POST") {
-            const response = await API.post("/showtimes/create",formData)
+            const response = await API.post("/showtimes/",formData)
             props.create(response.data)
             console.log(response.data)
         }
@@ -109,16 +102,16 @@ export const ShowtimesDialog = props => {
                         margin="dense"
                         id="outlined-helperText"
                         label="Початок о"
-                        defaultValue={startAt}
-                        onChange={(e) => setStartAt(e.target.value)}
+                        defaultValue={showtime.startAt}
+                        onChange={(e) => setShowtime({...showtime, startAt: e.target.value})}
                         fullWidth
                     />
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
                         label="Ціна за квиток"
-                        defaultValue={price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        defaultValue={showtime.price}
+                        onChange={(e) => setShowtime({...showtime, price: e.target.value})}
                         fullWidth
                     />
                     <FormControl sx={{ width: 300, marginTop: 3}}>
@@ -126,8 +119,8 @@ export const ShowtimesDialog = props => {
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
-                            value={movie}
-                            defaultValue={movie}
+                            value={showtime.movieId}
+                            defaultValue={showtime.movieId}
                             onChange={handleChangeMovie}
                             input={<OutlinedInput label="Name" />}
                         >
@@ -146,8 +139,8 @@ export const ShowtimesDialog = props => {
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
-                            value={cinema}
-                            defaultValue={cinema}
+                            value={showtime.cinemaId}
+                            defaultValue={showtime.cinemaId}
                             onChange={handleChangeCinema}
                             input={<OutlinedInput label="Name" />}
                         >
@@ -166,8 +159,8 @@ export const ShowtimesDialog = props => {
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
-                            value={hall}
-                            defaultValue={hall}
+                            value={showtime.hallId}
+                            defaultValue={showtime.hallId}
                             onChange={handleChangeHall}
                             input={<OutlinedInput label="Name" />}
                         >
@@ -187,9 +180,9 @@ export const ShowtimesDialog = props => {
                         <DateTimePicker
                             renderInput={(props) => <TextField {...props} />}
                             label="DateTimePicker"
-                            value={startDate}
+                            value={showtime.startDate}
                             onChange={(newValue) => {
-                                setStartDate(newValue);
+                                setShowtime({...showtime, startDate: newValue})
                             }}
                         />
                     </LocalizationProvider>
@@ -199,9 +192,9 @@ export const ShowtimesDialog = props => {
                         <DateTimePicker
                             renderInput={(props) => <TextField {...props} />}
                             label="DateTimePicker"
-                            value={endDate}
+                            value={showtime.endDate}
                             onChange={(newValue) => {
-                                setEndDate(newValue);
+                                setShowtime({...showtime, endDate: newValue})
                             }}
                         />
                     </LocalizationProvider>

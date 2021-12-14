@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import {Button, InputLabel, Select} from "@mui/material"
 import Container from "@mui/material/Container";
-import generateArray from "../../tools/GenerateArray"
+import generateArray from "../../utils/GenerateArray"
 import {useEffect, useState} from "react";
 import {API} from "../../API/api";
 import {Link} from "react-router-dom";
