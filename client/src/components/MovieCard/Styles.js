@@ -19,6 +19,9 @@ export const useStyles = makeStyles({
         fontWeight: "400",
         lineHeight: "1.5",
         fontSize: "1rem",
+        '@media (max-width: 500px)': {
+            maxWidth: "100%",
+        }
     },
     author: {
         paddingTop: "20px",

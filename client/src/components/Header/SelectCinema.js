@@ -27,7 +27,7 @@ export const SelectCinema = props => {
 
 
     return (
-        <FormControl sx={{ m: 1, minWidth: 120}}>
+        <FormControl sx={{ m: 1,  minWidth: 120}}>
             <InputLabel
                 htmlFor="grouped-select"
                 style={{color:"white"}}

@@ -61,7 +61,7 @@ export const ShowtimesDialog = props => {
             setHalls(response.data)
         }
         getHalls()
-    }, [showtime.cinema])
+    }, [showtime])
     const handleCreate = async () => {
 
         const formData = new URLSearchParams()

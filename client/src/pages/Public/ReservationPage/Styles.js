@@ -6,6 +6,12 @@ export const useStyles = makeStyles({
         gridColumnGap: "30px",
         gridRowGap:"10px",
         padding: "50px",
+        '@media (max-width: 800px)': {
+            width: "100%",
+            overflow: "scroll",
+            padding: 10
+        }
+
     },
     movieTitle: {
         color: "orange"
