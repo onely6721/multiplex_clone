@@ -1,5 +1,5 @@
 const showtimeService = require('../service/showtime-service')
-const moment = require('moment-timezone')
+
 
 class ShowtimeController{
     async getShowtimes(req, res, next) {
@@ -7,6 +7,15 @@ class ShowtimeController{
             const showtimes = await showtimeService.getShowtimes()
             return res.status(200).json(showtimes)
         } catch (e) {
+            return res.status(400).send(e)
+        }
+    }
+
+    async generateSchedule (req, res, next) {
+        try {
+            const schedule = await showtimeService.generateSchedule(req.body)
+            return res.status(200).json(schedule)
+        }   catch (e) {
             return res.status(400).send(e)
         }
     }

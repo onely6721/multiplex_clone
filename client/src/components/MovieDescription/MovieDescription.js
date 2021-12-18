@@ -53,6 +53,7 @@ export const MovieDescription = props => {
             </Grid>
             <br/>
             <Typography className={classes.description}>{movie.description}</Typography>
+
         </Container>
     )
 }

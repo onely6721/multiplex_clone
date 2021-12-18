@@ -2,14 +2,32 @@ const ShowtimeModel = require('../models/showtime-model')
 const CinemaModel = require('../models/cinema-model')
 const MovieModel = require('../models/movie-model')
 const HallModel = require('../models/hall-model')
-
-
 const moment = require('moment-timezone')
+
 
 class ShowtimeService {
     async getShowtimes() {
         const showtimes = await ShowtimeModel.find()
         return showtimes
+    }
+
+    async generateSchedule(params) {
+        const result = []
+        let startDate = params.startDate
+        for (let i = 0; i < params.count; i++) {
+            const showtime = await ShowtimeModel.create({
+                movieId: params.movieId,
+                cinemaId: params.cinemaId,
+                hallId: params.hallId,
+                startDate: startDate,
+                endDate: moment(startDate).add(params.duration, 'm'),
+                startAt: moment(startDate).format("HH:mm"),
+                price: params.price
+            })
+            result.push(showtime)
+            startDate = moment(startDate).add(params.duration, 'm').add(params.delay, 'm')
+        }
+        return result
     }
 
     async getShowtimeById(showtimeId) {

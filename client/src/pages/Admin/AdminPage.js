@@ -1,20 +1,49 @@
 import {Route, Routes} from "react-router-dom"
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {AdminMoviesPage} from "./AdminMoviesPage/AdminMoviesPage";
 import {AdminCinemasPage} from "./AdminCinemasPage/AdminCinemasPage";
 import {AdminHallsPage} from "./AdminHallsPage/AdminHallsPage";
 import {AdminShowtimesPage} from "./AdminShowtimePage/AdminShowtimesPage";
 import {AdminReservationsPage} from "./AdminReservationPage/AdminReservationsPage";
+import {AuthContext} from "../../context/AuthContext";
+import {parseJwt} from "../../utils/ParseJWT";
 
 export const AdminPage = () => {
-    return (
-            <Routes>
-                <Route path="/films" element={<AdminMoviesPage/>}/>
-                <Route path="/cinemas" element={<AdminCinemasPage/>}/>
-                <Route path="/halls" element={<AdminHallsPage/>}/>
-                <Route path="/showtimes" element={<AdminShowtimesPage/>}/>
-                <Route path="/reservations" element={<AdminReservationsPage/>}/>
-            </Routes>
 
-    );
+    const [role, setRole] = useState(null)
+    const {isAuth} = useContext(AuthContext)
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        if (token) {
+            const jwtPayload =  parseJwt(token)
+            console.log(jwtPayload)
+            setRole(jwtPayload.role)
+        } else {
+            setRole(null)
+        }
+    }, [isAuth])
+
+    if (role === 'admin')
+        return (
+                <Routes>
+                    <Route path="/films" element={<AdminMoviesPage/>}/>
+                    <Route path="/cinemas" element={<AdminCinemasPage/>}/>
+                    <Route path="/halls" element={<AdminHallsPage/>}/>
+                    <Route path="/showtimes" element={<AdminShowtimesPage/>}/>
+                    <Route path="/reservations" element={<AdminReservationsPage/>}/>
+                </Routes>
+
+        )
+    else
+        return (
+            <div align='center'>
+                <h1>Нету доступа!</h1>
+                <h1>Нету доступа!</h1>
+                <h1>Нету доступа!</h1>
+                <h1>Нету доступа!</h1>
+                <h1>Нету доступа!</h1>
+                <h1>Нету доступа!</h1>
+            </div>
+        )
+
 }
