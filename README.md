@@ -26,3 +26,7 @@ cd client npm start
 ```
 
 
+**Screenshots**
+
+[MainPage](https://photos.google.com/photo/AF1QipPjSeM8pO6UxOd6PBypU-UkXrJoWBQlu7m-y5uI)
+[ReservationPage](https://photos.google.com/photo/AF1QipOSDQofgPDj-H-blijXRMCHu5W4vLT6tRhi9l2F)
