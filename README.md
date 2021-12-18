@@ -18,8 +18,6 @@ in server create .env file and add PORT, DB_URL, JWT_SECRET
 cd server npm install && npm run dev
 cd client npm install && npm start
 
-
-
 ```
 
 
