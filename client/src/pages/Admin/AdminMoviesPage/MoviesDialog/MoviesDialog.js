@@ -10,7 +10,7 @@ import {
 import {useState} from "react";
 import {DatePicker, LocalizationProvider} from '@mui/lab';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import {API} from "../../../API/api";
+import {API} from "../../../../API/api";
 
 const names = [
     'Жахи',

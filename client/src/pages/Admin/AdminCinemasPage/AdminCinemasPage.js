@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {API} from "../../../API/api";
-import {CinemasDialog} from "./CinemasDialog";
+import {CinemasDialog} from "./CinemasDialog/CinemasDialog";
 import {
     Button,
     Container,

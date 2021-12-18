@@ -6,11 +6,11 @@ class MovieService {
         return movies
     }
 
-    async getNewMovie() {
-        const  movie = await  MovieModel.findOne()
+
+    async random() {
+        const movie = await MovieModel.aggregate([{ $sample: { size: 1 } }])
         return movie
     }
-
     async getMoviesByCinemaId(id) {
         const movies = await MovieModel.find({cinema: id})
         return movies

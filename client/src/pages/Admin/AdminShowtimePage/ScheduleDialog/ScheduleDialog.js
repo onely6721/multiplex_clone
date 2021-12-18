@@ -10,12 +10,12 @@ import {
 import {useEffect, useState} from "react";
 import {DatePicker, DateTimePicker, LocalizationProvider} from '@mui/lab';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import {API} from "../../../API/api";
+import {API} from "../../../../API/api";
 
 
 
 
-export const ShowtimesDialog = props => {
+export const ScheduleDialog = props => {
     const [open, setOpen] = useState(false);
     const [showtime, setShowtime] = useState({...props.showtime})
     const [cinemas, setCinemas] = useState([])
@@ -65,24 +65,20 @@ export const ShowtimesDialog = props => {
     const handleCreate = async () => {
 
         const formData = new URLSearchParams()
-        formData.append('startAt', showtime.startAt)
+        formData.append('duration', showtime.duration)
         formData.append('startDate', showtime.startDate)
-        formData.append('endDate', showtime.endDate)
+        formData.append('delay', showtime.delay)
         formData.append('price', showtime.price)
+        formData.append('count', showtime.count)
         formData.append('movieId', showtime.movieId)
         formData.append('cinemaId', showtime.cinemaId)
         formData.append('hallId', showtime.hallId)
 
-        if(props.method === "POST") {
-            const response = await API.post("/showtimes/",formData)
-            props.create(response.data)
-            console.log(response.data)
-        }
-        if(props.method === "PUT") {
-            const response = await API.put("/showtimes/" + props.showtime._id, formData)
-            props.update(response.data)
-            console.log(response.data)
-        }
+
+        const response = await API.post("/showtimes/generateSchedule",formData)
+        props.create(response.data)
+
+
         setOpen(false);
     };
 
@@ -93,7 +89,7 @@ export const ShowtimesDialog = props => {
     return (
         <div>
             <Button  onClick={handleClickOpen}>
-                {props.method === "POST" ? `Create` : `Edit`}
+                Generate
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} Showtime</DialogTitle>
@@ -101,17 +97,33 @@ export const ShowtimesDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Початок о"
-                        defaultValue={showtime.startAt}
-                        onChange={(e) => setShowtime({...showtime, startAt: e.target.value})}
+                        label="Ціна за квиток"
+                        defaultValue={showtime.price}
+                        onChange={(e) => setShowtime({...showtime, price: e.target.value})}
                         fullWidth
                     />
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Ціна за квиток"
-                        defaultValue={showtime.price}
-                        onChange={(e) => setShowtime({...showtime, price: e.target.value})}
+                        label="Перерив між сеансом(у хвилинах)"
+                        defaultValue={showtime.delay}
+                        onChange={(e) => setShowtime({...showtime, delay: e.target.value})}
+                        fullWidth
+                    />
+                    <TextField
+                        margin="dense"
+                        id="outlined-helperText"
+                        label="Тривалість сеансу"
+                        defaultValue={showtime.duration}
+                        onChange={(e) => setShowtime({...showtime, duration: e.target.value})}
+                        fullWidth
+                    />
+                    <TextField
+                        margin="dense"
+                        id="outlined-helperText"
+                        label="Кількість сеансів"
+                        defaultValue={showtime.count}
+                        onChange={(e) => setShowtime({...showtime, count: e.target.value})}
                         fullWidth
                     />
                     <FormControl sx={{ width: 300, marginTop: 3}}>
@@ -175,7 +187,6 @@ export const ShowtimesDialog = props => {
                         </Select>
                     </FormControl>
                     <br/>
-                    <br/>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DateTimePicker
                             renderInput={(props) => <TextField {...props} />}
@@ -186,22 +197,10 @@ export const ShowtimesDialog = props => {
                             }}
                         />
                     </LocalizationProvider>
-                    <br/>
-                    <br/>
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DateTimePicker
-                            renderInput={(props) => <TextField {...props} />}
-                            label="DateTimePicker"
-                            value={showtime.endDate}
-                            onChange={(newValue) => {
-                                setShowtime({...showtime, endDate: newValue})
-                            }}
-                        />
-                    </LocalizationProvider>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleCreate}>{props.method === "POST" ? `Create` : `Edit`}</Button>
+                    <Button onClick={handleCreate}>Ok</Button>
                 </DialogActions>
             </Dialog>
         </div>

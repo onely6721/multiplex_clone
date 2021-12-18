@@ -13,7 +13,7 @@ import {
 import {useEffect, useState} from "react";
 import moment from "moment";
 import {API} from "../../../API/api";
-import {MoviesDialog} from "./MoviesDialog";
+import {MoviesDialog} from "./MoviesDialog/MoviesDialog";
 import {TablePaginationActions} from "../TablePaginationActions";
 const nullMovie = {
     title: null,

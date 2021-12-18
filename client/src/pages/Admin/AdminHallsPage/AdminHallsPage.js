@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {API} from "../../../API/api";
-import {HallsDialog} from "./HallsDialog";
+import {HallsDialog} from "./HallsDialog/HallsDialog";
 import {
     Button,
     Container,

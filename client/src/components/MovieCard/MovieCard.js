@@ -13,10 +13,16 @@ export const MovieCard = () => {
     const classes = useStyles()
     useEffect(()=> {
         const getRandomMovie = async () => {
-            const randomMovie = await API.get("/movies/by/random")
-            const newLink = "http://localhost:5000/resource/images/" + randomMovie.data.image
-            setLink(newLink)
-            setMovie(randomMovie.data)
+            try {
+                const randomMovie = await API.get("/movies/random")
+                console.log(randomMovie)
+                const newLink = "http://localhost:5000/resource/images/" + randomMovie.data[0].image
+                setLink(newLink)
+                setMovie(randomMovie.data[0])
+            } catch (e) {
+               console.log(e.message)
+            }
+
         }
         getRandomMovie()
     },[])

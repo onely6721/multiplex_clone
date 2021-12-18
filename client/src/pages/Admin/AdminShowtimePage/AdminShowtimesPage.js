@@ -12,8 +12,8 @@ import {
     TableRow
 } from "@mui/material";
 import {TablePaginationActions} from "../TablePaginationActions";
-import {ShowtimesDialog} from "./ShowtimesDialog";
-
+import {ShowtimesDialog} from "./ShowtimesDialog/ShowtimesDialog";
+import {ScheduleDialog} from "./ScheduleDialog/ScheduleDialog";
 
 const nullShowtime = {
     cinemaId: null,
@@ -50,6 +50,24 @@ export const AdminShowtimesPage = () => {
             hallName: hall.data.name,
         }
         setShowtimes([...showtimes, newShowtime])
+    }
+
+    const generateSchedule = async(schedule) => {
+        const newShowtimes = await Promise.all(
+            schedule.map(async (showtime, index) => {
+                    const cinema = await API.get("/cinemas/"+showtime.cinemaId)
+                    const movie = await API.get("/movies/"+showtime.movieId)
+                    const hall = await API.get("/halls/"+showtime.hallId)
+                    return {
+                        ...showtime,
+                        cinemaName: cinema.data.name,
+                        movieName: movie.data.title,
+                        hallName: hall.data.name,
+                    }
+            })
+        )
+        setShowtimes([...showtimes, ...newShowtimes])
+        console.log(newShowtimes)
     }
 
     const handleUpdate = async (showtime) => {
@@ -109,6 +127,7 @@ export const AdminShowtimesPage = () => {
         <div style={{color:"white", marginTop:"100px"}}>
             <h1 align="center">Halls</h1>
             <ShowtimesDialog  create={handleCreate} showtime={nullShowtime} method="POST"/>
+            <ScheduleDialog create={generateSchedule}/>
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">

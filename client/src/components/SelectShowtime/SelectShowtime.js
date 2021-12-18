@@ -66,8 +66,8 @@ export const SelectShowtime = props => {
                             )
                         }).sort()}
                     </Select>
-                    <br/>
                 </FormControl>
+                <br/>
                 {showtimes.map((showtime, index) => {
                     const dateShowtime = moment(showtime.startDate)
                     if(dateShowtime.isAfter(new Date()))

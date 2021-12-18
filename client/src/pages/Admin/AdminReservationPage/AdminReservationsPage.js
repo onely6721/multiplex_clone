@@ -12,7 +12,7 @@ import {
     TableRow
 } from "@mui/material";
 import {TablePaginationActions} from "../TablePaginationActions";
-import {ReservationDialog} from "./ReservationsDialog";
+import {ReservationDialog} from "./ReservationsDialog/ReservationsDialog";
 
 const nullReservation = {
     showtime: "61a2323b94e07675d9110d14",

@@ -6,11 +6,11 @@ const adminMiddleware = require('../middlewares/admin-middleware')
 
 router.get('/', movieController.getMovies)
 router.post('/', adminMiddleware, fileUpload.single('image'), movieController.create)
+router.get('/random',  movieController.random)
 router.get('/:id', movieController.getMovieById )
 router.get('/byCinema/:id',  movieController.getMoviesByCinemaId)
 router.put('/:id',adminMiddleware, fileUpload.single('image'),movieController.update)
 router.delete('/:id', adminMiddleware,  movieController.delete)
-router.get('/by/random', movieController.getNewMovie)
 
 
 module.exports = router
