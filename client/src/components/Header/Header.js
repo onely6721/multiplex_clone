@@ -1,26 +1,22 @@
 import { AppBar, Toolbar, Box} from "@mui/material";
 import {useContext, useEffect, useState} from "react";
-import {AdminMenu} from "./AdminMenu";
-import {SelectCinema} from "./SelectCinema";
-import {Logo} from "./Logo";
-import {UserMenu} from "./UserMenu";
+import {AdminMenu} from "./AdminMenu/AdminMenu";
+import {SelectCinema} from "./SelectCinema/SelectCinema";
+import {Logo} from "./Logo/Logo";
+import {UserMenu} from "./UserMenu/UserMenu";
 import {parseJwt} from "../../utils/ParseJWT";
 import {AuthContext} from "../../context/AuthContext";
 
 
 export const Header = () => {
 
-    const [role, setRole] = useState(null)
-    const {isAuth} = useContext(AuthContext)
+   const {token, isAuth, role, setRole} = useContext(AuthContext)
     useEffect(() => {
-        const token = localStorage.getItem("token")
-        if (token) {
-            const jwtPayload =  parseJwt(token)
-            console.log(jwtPayload)
-            setRole(jwtPayload.role)
-        } else {
-            setRole(null)
-        }
+       if (isAuth) {
+           setRole(parseJwt(token).role)
+       } else {
+           setRole(null)
+       }
     }, [isAuth])
 
     return(

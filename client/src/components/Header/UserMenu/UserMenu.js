@@ -2,10 +2,10 @@ import {IconButton, Menu} from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import MenuItem from "@mui/material/MenuItem";
 import {Link} from "react-router-dom";
-import {LoginModal} from "../Modals/LoginModal";
+import {LoginModal} from "../../Modals/LoginModal/LoginModal";
 import {useContext, useState} from "react";
-import {AuthContext} from "../../context/AuthContext";
-import {RegistrationModal} from "../Modals/RegistrationModal";
+import {AuthContext} from "../../../context/AuthContext";
+import {RegistrationModal} from "../../Modals/RegistrationModal/RegistrationModal";
 
 
 const PaperProps = {

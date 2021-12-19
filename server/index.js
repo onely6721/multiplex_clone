@@ -5,7 +5,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const router = require("./router/index")
 const bodyParser = require('body-parser')
-
+const authMiddleware = require('./middlewares/admin-middleware')
 const PORT = process.env.PORT || 5000
 const app = express()
 
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors())
 
-app.use('/resource', express.static(__dirname + '/resource'));
+app.use('/resource',  express.static(__dirname + '/resource'));
 app.use('/api', router)
 
 

@@ -4,7 +4,7 @@ import Select from "@mui/material/Select";
 import ListSubheader from "@mui/material/ListSubheader";
 import MenuItem from "@mui/material/MenuItem";
 import {useEffect, useState} from "react";
-import {API} from "../../API/api";
+import {API} from "../../../API/api";
 
 
 export const SelectCinema = props => {

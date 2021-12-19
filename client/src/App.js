@@ -9,6 +9,7 @@ import {parseJwt} from "./utils/ParseJWT";
 
 function App() {
     const [token, setToken] = useState(localStorage.getItem("token"))
+    const [role, setRole] = useState(null)
     const [isAuth, setAuth] = useState(false)
     const routes = useRoutes(isAuth)
     useEffect(() => {
@@ -18,7 +19,9 @@ function App() {
                 setToken(null)
                 localStorage.removeItem('token')
                 setAuth(false)
+                setRole(null)
             } else {
+                setRole(jwtPayload.role)
                 setAuth(true)
             }
         }
@@ -26,7 +29,7 @@ function App() {
     }, [])
 
     return (
-        <AuthContext.Provider value={{token, isAuth, setToken, setAuth}}>
+        <AuthContext.Provider value={{token, isAuth, setToken, setAuth, role, setRole}}>
             <div className="App">
                 <Router>
                     <Header/>

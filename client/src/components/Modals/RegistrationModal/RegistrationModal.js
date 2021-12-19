@@ -5,28 +5,16 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {TextField} from "@mui/material";
 import {useContext, useState} from "react";
-import {API} from "../../API/api";
-import {AuthContext} from "../../context/AuthContext";
+import {API} from "../../../API/api";
+import {AuthContext} from "../../../context/AuthContext";
+import  {useStyles} from "./Styles";
 
-const style = {
-    textAlign: "center",
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'white',
-    color:"black",
-    border: '2px solid #000',
-    boxShadow: 24,
-    padding: "10px",
-    p: 4,
-};
 
 export const RegistrationModal = props => {
     const [userData, setUserData] = useState({})
+    const [error, setError] = useState(null)
     const {setToken, setAuth} = useContext(AuthContext)
-
+    const classes = useStyles()
     const handleInput = (e) => {
         setUserData((prevState) => ({
             ...prevState,
@@ -37,8 +25,10 @@ export const RegistrationModal = props => {
 
     const registration = async () => {
         try {
-            if(userData.password !== userData.password2)
-                throw Error("Пароли не совпадают")
+            if(userData.password !== userData.password2) {
+                setError("Пароли не совпадают")
+                return
+            }
             const formData = new URLSearchParams()
             formData.append('username', userData.username)
             formData.append('email', userData.email)
@@ -50,7 +40,7 @@ export const RegistrationModal = props => {
             }
             props.close()
         } catch (e) {
-            alert(e.message)
+            setError(e.response.data.message)
         }
     }
 
@@ -62,7 +52,7 @@ export const RegistrationModal = props => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style} >
+                <Box  className={classes.modal} >
                     <Typography align="center" id="modal-modal-title" variant="h6" component="h2">
                         Реєстрація
                     </Typography>
@@ -105,6 +95,7 @@ export const RegistrationModal = props => {
                         onChange={handleInput}
                     />
                     <br/>
+                    {error && <div style={{color:"red"}}>{error}</div>}
                     <Button
                         variant="outlined"
                         onClick={registration}
