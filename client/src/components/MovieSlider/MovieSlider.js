@@ -8,6 +8,7 @@ import Container from "@mui/material/Container";
 import {Typography} from "@mui/material";
 import {useStyles} from "./Styles";
 import {settings} from "./SliderSettings";
+import {MovieCard} from "../MovieCard/MovieCard";
 
 
 export const MovieSlider  = () => {
@@ -31,16 +32,12 @@ export const MovieSlider  = () => {
                     <h1 style={{color:"white", marginBottom:"30px"}}>Сейчас в прокате</h1>
                     <Slider {...settings}>
                         {movies.map((movie, index) => {
-                            return(
-                                <Link key={movie._id}  to={`/detail/${movie._id}`}>
-                                    <img src={`http://localhost:5000/resource/images/${movie.image}`}/>
-                                     <Typography   align="center" component="h4"> {movie.title}</Typography>
-                                </Link>
+                            return (
+                                <MovieCard  height="400px" other={false} movie={movie}/>
                             )
                         })}
                     </Slider>
                 </Container>
-
             </div>
         );
 }

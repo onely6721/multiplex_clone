@@ -9,10 +9,10 @@ import {useStyles} from "./Styles";
 
 export const MovieCard = props => {
     const classes = useStyles()
-
     return (
         <div className={classes.background} style={{
             backgroundImage: `url(${"http://localhost:5000/resource/images/" + props.movie.image})`,
+            height: props.height ? props.height : "85vh",
         }}>
             <Link to={`/detail/${props.movie._id}`}>
             <div className="movie-card">
@@ -23,12 +23,17 @@ export const MovieCard = props => {
                     <Typography className={classes.description}>
                         {props.movie.description}
                     </Typography>
-                    <Typography className={classes.author}>
-                        {props.movie.director}
-                    </Typography>
-                    <Box className={classes.durability}>
-                        {props.movie.duration}
-                    </Box>
+                    {props.other !== false
+                        &&
+                        <>
+                            <Typography className={classes.author}>
+                                {props.movie.director}
+                            </Typography>
+                            <Box className={classes.durability}>
+                                {props.movie.duration}
+                            </Box>
+                        </>
+                    }
                 </Container>
             </div>
             </Link>
