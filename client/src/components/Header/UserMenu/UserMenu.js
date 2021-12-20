@@ -71,6 +71,14 @@ export const UserMenu = props => {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
+                <MenuItem onClick={handleClose}>
+                    <Link
+                        style={{color:"black"}}
+                        to='/movies'
+                    >
+                        Все фильмы
+                    </Link>
+                </MenuItem>
                 {
                     isAuth
                         ?

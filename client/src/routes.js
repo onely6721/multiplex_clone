@@ -15,6 +15,7 @@ import {AdminCinemasPage} from "./pages/Admin/AdminCinemasPage/AdminCinemasPage"
 import {AdminHallsPage} from "./pages/Admin/AdminHallsPage/AdminHallsPage"
 import {AdminShowtimesPage} from "./pages/Admin/AdminShowtimePage/AdminShowtimesPage";
 import {AdminReservationsPage} from "./pages/Admin/AdminReservationPage/AdminReservationsPage";
+import {MoviesPage} from "./pages/Public/MoviesPage/MoviesPage";
 
 export const useRoutes = isAuthenticated => {
 
@@ -30,6 +31,7 @@ export const useRoutes = isAuthenticated => {
                 </Route>
                 <Route path="/detail/:id" element={<MovieDetailPage/>}/>
                 <Route path="/reservation/:id" element={<ReservationPage/>}/>
+                <Route path="/movies" element={<MoviesPage/>}/>
                 <Route path="*" element={<Navigate to ="/" />}/>
                 {isAuthenticated &&  <Route path="/profile" element={<ShowReservationPage/>}/>}
 

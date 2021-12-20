@@ -25,8 +25,8 @@ export const MovieDescription = props => {
 
     return (
         <Container className={classes.container}>
-            <Typography component="h1" align="center">{movie.title}</Typography>
-            <Grid container spacing={2}>
+            <h2 align="center">{movie.title}</h2>
+            <Grid container spacing={2} className={classes.params}>
                 <Grid item  md={3} className={classes.description}>
                     <img src={link} className={classes.poster} alt=""/>
                 </Grid>

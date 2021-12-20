@@ -7,49 +7,31 @@ import {Link} from "react-router-dom";
 import {useStyles} from "./Styles";
 
 
-export const MovieCard = () => {
-    const [movie, setMovie] = useState({})
-    const [link, setLink] = useState()
+export const MovieCard = props => {
     const classes = useStyles()
-    useEffect(()=> {
-        const getRandomMovie = async () => {
-            try {
-                const randomMovie = await API.get("/movies/random")
-                console.log(randomMovie)
-                const newLink = "http://localhost:5000/resource/images/" + randomMovie.data[0].image
-                setLink(newLink)
-                setMovie(randomMovie.data[0])
-            } catch (e) {
-               console.log(e.message)
-            }
-
-        }
-        getRandomMovie()
-    },[])
-
 
     return (
         <div className={classes.background} style={{
-            backgroundImage: `url(${link})`,
+            backgroundImage: `url(${"http://localhost:5000/resource/images/" + props.movie.image})`,
         }}>
+            <Link to={`/detail/${props.movie._id}`}>
             <div className="movie-card">
                 <Container>
-                    <Link to={`/detail/${movie._id}`}>
-                        <h1 style={{ paddingTop:"20%", }}>
-                            {movie.title}
-                        </h1>
-                    </Link>
+                    <h1 style={{ paddingTop:"20%", }}>
+                        {props.movie.title}
+                    </h1>
                     <Typography className={classes.description}>
-                        {movie.description}
+                        {props.movie.description}
                     </Typography>
                     <Typography className={classes.author}>
-                        {movie.director}
+                        {props.movie.director}
                     </Typography>
                     <Box className={classes.durability}>
-                        {movie.duration}
+                        {props.movie.duration}
                     </Box>
                 </Container>
             </div>
-        </div>
+            </Link>
+         </div>
     )
 }

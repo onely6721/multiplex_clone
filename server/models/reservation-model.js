@@ -22,6 +22,10 @@ const ReservationSchema = new Schema({
         type: Types.ObjectId,
         ref: "User",
         required: false
+    },
+    date: {
+      type: Date,
+      default: Date.now
     }
 })
 

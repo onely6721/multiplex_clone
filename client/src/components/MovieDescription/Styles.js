@@ -10,7 +10,10 @@ export const useStyles = makeStyles({
     },
     description: {
         color: "silver",
-        fontSize: "8pt"
+        fontSize: "10pt"
     },
+    params : {
+        marginTop: "10px",
+    }
 
 });
