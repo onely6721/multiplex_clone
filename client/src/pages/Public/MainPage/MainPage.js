@@ -1,4 +1,3 @@
-
 import {MovieSlider} from "../../../components/MovieSlider/MovieSlider";
 import {MovieCard} from "../../../components/MovieCard/MovieCard";
 import {useEffect, useState} from "react";

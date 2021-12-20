@@ -1,6 +1,4 @@
 import axios from "axios";
-import {useContext} from "react";
-import {AuthContext} from "../context/AuthContext";
 
 const getToken = () => localStorage.getItem("token")
 export const API = axios.create ({

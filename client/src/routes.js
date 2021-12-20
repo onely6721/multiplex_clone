@@ -8,7 +8,7 @@ import {
 import {MainPage} from "./pages/Public/MainPage/MainPage";
 import {MovieDetailPage} from "./pages/Public/MovieDetailPage/MovieDetailPage";
 import {ReservationPage} from "./pages/Public/ReservationPage/ReservationPage";
-import {ShowReservationPage} from "./pages/User/ShowReservationPage/ShowReservationPage";
+import {UserReservationPage} from "./pages/User/UserReservationPage/UserReservationPage";
 import {AdminPage} from "./pages/Admin/AdminPage";
 import {AdminMoviesPage} from "./pages/Admin/AdminMoviesPage/AdminMoviesPage";
 import {AdminCinemasPage} from "./pages/Admin/AdminCinemasPage/AdminCinemasPage";
@@ -33,7 +33,7 @@ export const useRoutes = isAuthenticated => {
                 <Route path="/reservation/:id" element={<ReservationPage/>}/>
                 <Route path="/movies" element={<MoviesPage/>}/>
                 <Route path="*" element={<Navigate to ="/" />}/>
-                {isAuthenticated &&  <Route path="/profile" element={<ShowReservationPage/>}/>}
+                {isAuthenticated &&  <Route path="/profile" element={<UserReservationPage/>}/>}
 
             </Routes>
         )

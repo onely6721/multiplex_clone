@@ -35,7 +35,6 @@ export const AdminMenu = props => {
                         <Link to="/admin/reservations" style={{color:"black"}}>Бронювання</Link>
                     </ListItem>
                 </List>
-
             </Drawer>
         </div>
     )

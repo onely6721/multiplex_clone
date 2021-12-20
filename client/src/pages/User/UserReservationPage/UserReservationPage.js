@@ -18,7 +18,7 @@ import {API} from "../../../API/api";
 
 
 
-export const ShowReservationPage = () => {
+export const UserReservationPage = () => {
 
     const [reservations, setReservations] = useState([])
 
