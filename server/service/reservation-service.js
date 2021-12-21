@@ -1,8 +1,6 @@
+import {API} from "../../client/src/API/api";
+
 const ReservationModel = require('../models/reservation-model')
-const ShowtimeModel = require('../models/showtime-model')
-const MovieModel = require('../models/movie-model')
-const HallModel = require('../models/hall-model')
-const CinemaModel = require('../models/cinema-model')
 
 class ReservationService {
     async getReservations() {
@@ -16,25 +14,12 @@ class ReservationService {
     }
 
     async getReservationsForUser(id) {
-        const tempReservations = await ReservationModel.find({owner: id})
-        const reservations = await Promise.all(tempReservations.map( async (reserv) => {
-            const showTime = await  ShowtimeModel.findById(reserv.showtime)
-            const movie = await MovieModel.findById(showTime.movieId)
-            const hall = await  HallModel.findById(showTime.hallId)
-            const cinema = await CinemaModel.findById(showTime.cinemaId)
-            const newReservation = {
-                id: reserv._id,
-                row: reserv.row,
-                column: reserv.column,
-                movieTitle: movie.title,
-                cinemaName: cinema.name,
-                hallName: hall.name,
-                startDate: showTime.startDate,
-                startAt: showTime.startAt,
-                price: showTime.price,
-            }
-            return newReservation
-        }))
+        const reservations = await ReservationModel.find({owner: id})
+                                                    .populate({
+                                                        path: 'showtime',
+                                                        populate:[ {path: 'movieId'}, {path:'cinemaId'}]
+                                                    })
+
         return reservations
     }
 
@@ -43,6 +28,10 @@ class ReservationService {
         return reservations
     }
 
+    async getCountForMovies() {
+        const reservations = await ReservationModel.find().count()
+        return reservations
+    }
 
     async update(id, reservation) {
         const newReservation = await ReservationModel.findByIdAndUpdate(id, reservation, {new: true})
@@ -60,7 +49,19 @@ class ReservationService {
         const newReservation = await ReservationModel.create(reservation)
         return newReservation
     }
+    async createReservations(reservations) {
+        const session = await ReservationModel.startSession()
+        await session.startTransaction()
+        const createdReservations =  await Promise.all(
+            reservations.map(async (rsv, index) => {
+                return await ReservationModel.create(rsv)
+            })
+        )
+        await session.commitTransaction()
+        await session.endSession()
+        return createdReservations
 
+    }
     async delete(id, user) {
         if (user.role === 'admin'){
             await ReservationModel.findByIdAndDelete(id)

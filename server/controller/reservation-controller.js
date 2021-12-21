@@ -10,6 +10,15 @@ class ReservationController{
         }
     }
 
+    async createReservations(req,res,next) {
+        try {
+            const reservations = await reservationService.createReservations(req.body)
+            return res.status(200).json(reservations)
+        } catch (e) {
+            return res.status(400).json({message: e.message})
+        }
+    }
+
     async getReservationById(req, res, next) {
         try {
             const id = req.params.id
@@ -31,7 +40,14 @@ class ReservationController{
         }
     }
 
-
+    async getCountForMovies(req, res, next) {
+        try {
+            const reservations = await reservationService.getCountForMovies()
+            return res.status(200).json(reservations)
+        } catch (e) {
+            return res.status(400).json({message: e.message})
+        }
+    }
     async getReservationsForUser(req, res, next) {
         try {
             const id = req.user.userId

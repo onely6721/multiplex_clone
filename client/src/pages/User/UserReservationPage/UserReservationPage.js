@@ -31,6 +31,7 @@ export const UserReservationPage = () => {
                      }
                  })
              setReservations(response.data)
+           console.log(response.data)
        }
        getReservations()
     },[])
@@ -43,7 +44,7 @@ export const UserReservationPage = () => {
         })
         setReservations(
             reservations.filter((reservation) => {
-                if (reservation.id !== id)
+                if (reservation._id !== id)
                     return reservation
             })
         )
@@ -70,21 +71,21 @@ export const UserReservationPage = () => {
                             {reservations.map((reservation) => (
                                 <TableRow key={reservation._id}>
                                     <TableCell component="th" scope="row">
-                                        {reservation.movieTitle}
+                                        {reservation.showtime.movieId.title}
                                     </TableCell>
-                                    <TableCell align="right">{reservation.cinemaName}</TableCell>
+                                    <TableCell align="right">{reservation.showtime.cinemaId.name}</TableCell>
                                     <TableCell align="right">{moment(reservation.startDate).format("YYYY-MM-DD")}</TableCell>
-                                    <TableCell align="right">{reservation.startAt}</TableCell>
+                                    <TableCell align="right">{reservation.showtime.startAt}</TableCell>
                                     <TableCell align="right">{reservation.row}</TableCell>
                                     <TableCell align="right">{reservation.column}</TableCell>
-                                    <TableCell align="right">{reservation.price}</TableCell>
+                                    <TableCell align="right">{reservation.showtime.price}</TableCell>
 
                                     <TableCell align="right">
                                         <Button
                                             variant={"outlined"}
                                             style={{color:"red", borderColor:"red"}}
                                             onClick={async (e) => {
-                                                await deleteReservation(reservation.id)
+                                                await deleteReservation(reservation._id)
                                             }}
                                         >
                                             Delete

@@ -1,7 +1,4 @@
 const ShowtimeModel = require('../models/showtime-model')
-const CinemaModel = require('../models/cinema-model')
-const MovieModel = require('../models/movie-model')
-const HallModel = require('../models/hall-model')
 const moment = require('moment-timezone')
 
 
@@ -32,19 +29,20 @@ class ShowtimeService {
 
     async getShowtimeById(showtimeId) {
         const showtime = await ShowtimeModel.findById(showtimeId)
-        const cinema = await CinemaModel.findById(showtime.cinemaId)
-        const movie = await MovieModel.findById(showtime.movieId)
-        const hall = await HallModel.findById(showtime.hallId)
+                                            .populate("cinemaId")
+                                            .populate("movieId")
+                                            .populate("cinemaId")
+                                            .populate("hallId")
         return {
             startAt: showtime.startAt,
             startDate: showtime.startDate,
             price: showtime.price,
-            columns: hall.columns,
-            rows: hall.rows,
+            columns: showtime.hallId.columns,
+            rows: showtime.hallId.rows,
             endDate: showtime.endDate,
-            cinemaName: cinema.name,
-            movieTitle: movie.title,
-            hallName: hall.name
+            cinemaName: showtime.cinemaId.name,
+            movieTitle: showtime.movieId.title,
+            hallName: showtime.hallId.name
         }
     }
 
@@ -59,7 +57,6 @@ class ShowtimeService {
         return showtimes
 
     }
-
 
     async update(id, newShowtime) {
         const showTime = await ShowtimeModel.findByIdAndUpdate(id, newShowtime, {new: true})
