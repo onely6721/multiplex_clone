@@ -7,6 +7,7 @@ import {AdminShowtimesPage} from "./AdminShowtimePage/AdminShowtimesPage";
 import {AdminReservationsPage} from "./AdminReservationPage/AdminReservationsPage";
 import {AuthContext} from "../../context/AuthContext";
 import {parseJwt} from "../../utils/ParseJWT";
+import {AdminStatsPage} from "./AdminStatsPage/AdminStatsPage";
 
 export const AdminPage = () => {
 
@@ -26,11 +27,12 @@ export const AdminPage = () => {
     if (role === 'admin')
         return (
                 <Routes>
+                    <Route path="/stats" element={<AdminStatsPage/>}/>
                     <Route path="/films" element={<AdminMoviesPage/>}/>
                     <Route path="/cinemas" element={<AdminCinemasPage/>}/>
                     <Route path="/halls" element={<AdminHallsPage/>}/>
                     <Route path="/showtimes" element={<AdminShowtimesPage/>}/>
-                    <Route path="/reservations" element={<AdminReservationsPage/>}/>
+                    <Route path="/reservations" element={<AdminStatsPage/>}/>
                 </Routes>
 
         )

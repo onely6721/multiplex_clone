@@ -35,10 +35,11 @@ class StatService {
             .project({
                 _id: 0,
                 movie: "$_id",
-                _totalCash: 1,
-                _totalReservations: 1
+                totalCash: 1,
+                totalReservations: 1
 
             })
+            .sort({totalCash: -1})
         const totalCount = await ReservationModel.find().count()
         return  {
             totalCount: totalCount,

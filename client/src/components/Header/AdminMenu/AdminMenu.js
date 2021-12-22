@@ -20,6 +20,9 @@ export const AdminMenu = props => {
             >
                 <List style={{padding:"20px"}}>
                     <ListItem>
+                        <Link to="/admin/stats" style={{color:"black"}}>Статистика</Link>
+                    </ListItem>
+                    <ListItem>
                         <Link to="/admin/films" style={{color:"black"}}>Фільми</Link>
                     </ListItem>
                     <ListItem>
