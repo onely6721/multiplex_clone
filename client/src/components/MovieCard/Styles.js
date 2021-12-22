@@ -3,7 +3,7 @@ import {makeStyles} from "@mui/styles";
 export const useStyles = makeStyles({
     background: {
         margin: 0,
-        height: "85vh",
+        height: "auto",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backdropFilter: `blur("8px")`,

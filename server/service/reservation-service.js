@@ -1,5 +1,3 @@
-import {API} from "../../client/src/API/api";
-
 const ReservationModel = require('../models/reservation-model')
 
 class ReservationService {

@@ -1,5 +1,8 @@
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/user-model")
+
+const validator = require("email-validator");
+
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
@@ -10,6 +13,9 @@ class UserService {
         })
         if (candidate) {
             throw Error("Такой пользователь уже существует")
+        }
+        if (!validator.validate(user.email)) {
+            throw Error("Не правильный email")
         }
         const hashedPassword = await bcrypt.hash(user.password, 3)
         const newUser = await UserModel.create({...user, password: hashedPassword})
