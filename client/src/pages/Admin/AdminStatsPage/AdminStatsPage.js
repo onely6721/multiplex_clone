@@ -50,7 +50,7 @@ export const AdminStatsPage = () => {
                  Статистика
              </h1>
              <Grid className={classes.offset} container spacing={2}>
-                 <Grid item xs={4}>
+                 <Grid item xs={12} md={4}>
                      <Card sx={{ minWidth: 275 }}>
                          <CardContent>
                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -62,7 +62,7 @@ export const AdminStatsPage = () => {
                          </CardContent>
                      </Card>
                  </Grid>
-                 <Grid item xs={4}>
+                 <Grid  item xs={12} md={4}>
                      <Card sx={{ minWidth: 275 }}>
                          <CardContent>
                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -74,7 +74,7 @@ export const AdminStatsPage = () => {
                          </CardContent>
                      </Card>
                  </Grid>
-                 <Grid item xs={4}>
+                 <Grid  item xs={12} md={4}>
                      <Card sx={{ minWidth: 275 }}>
                          <CardContent>
                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -86,7 +86,7 @@ export const AdminStatsPage = () => {
                          </CardContent>
                      </Card>
                  </Grid>
-                 <Grid item xs={4}>
+                 <Grid  item xs={12} md={4}>
                      <Card sx={{ minWidth: 275 }}>
                          <CardContent>
                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -98,7 +98,7 @@ export const AdminStatsPage = () => {
                          </CardContent>
                      </Card>
                  </Grid>
-                 <Grid item xs={4}>
+                 <Grid  item xs={12} md={4}>
                      <Card sx={{ minWidth: 275 }}>
                          <CardContent>
                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -115,7 +115,7 @@ export const AdminStatsPage = () => {
              <Grid container spacing={2} className={classes.offset}>
                  {reservations.map((reservation, index) => {
                      return (
-                         <Grid item xs={4} >
+                         <Grid item xs={12} md={4} >
                              <MovieStatCard reservation={reservation}/>
                          </Grid>
                      )
