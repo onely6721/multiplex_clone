@@ -32,7 +32,7 @@ export const AdminPage = () => {
                     <Route path="/cinemas" element={<AdminCinemasPage/>}/>
                     <Route path="/halls" element={<AdminHallsPage/>}/>
                     <Route path="/showtimes" element={<AdminShowtimesPage/>}/>
-                    <Route path="/reservations" element={<AdminStatsPage/>}/>
+                    <Route path="/reservations" element={<AdminReservationsPage/>}/>
                 </Routes>
 
         )

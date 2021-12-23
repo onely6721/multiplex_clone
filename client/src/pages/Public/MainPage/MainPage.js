@@ -22,8 +22,16 @@ export const MainPage = () => {
 
     return (
         <div className="App" >
-            <MovieCard movie={movie} link={movie}/>
-            <MovieSlider/>
+            {movie
+                ?
+                <>
+                    <MovieCard movie={movie} link={movie}/>
+                    <MovieSlider/>
+                </>
+                :
+                    <h1>Фильмов пока-что нет</h1>
+            }
+
         </div>
     );
 }

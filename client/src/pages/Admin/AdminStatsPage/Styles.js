@@ -12,5 +12,8 @@ export const useStyles = makeStyles({
     },
     reservationTitle: {
         marginTop: "100px"
+    },
+    offset: {
+        marginTop: "30px"
     }
 });

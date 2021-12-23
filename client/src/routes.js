@@ -28,6 +28,7 @@ export const useRoutes = isAuthenticated => {
                     <Route path="halls" element={<AdminHallsPage/>}/>
                     <Route path="showtimes" element={<AdminShowtimesPage/>}/>
                     <Route path="reservations" element={<AdminReservationsPage/>}/>
+                    <Route path="stats" element={<AdminReservationsPage/>}/>
                 </Route>
                 <Route path="/detail/:id" element={<MovieDetailPage/>}/>
                 <Route path="/reservation/:id" element={<ReservationPage/>}/>

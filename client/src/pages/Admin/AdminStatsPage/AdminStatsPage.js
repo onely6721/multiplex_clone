@@ -1,12 +1,13 @@
 import React, {useContext, useEffect, useState} from "react";
 import {API} from "../../../API/api";
 import {useStyles} from "./Styles";
-import {Container, Grid} from "@mui/material";
+import {Card, CardContent, Container, Grid, Typography} from "@mui/material";
 import {MovieStatCard} from "../../../components/MovieStatCard/MovieStatCard";
 
 export const AdminStatsPage = () => {
     const [reservations, setReservations] = useState([])
     const [totalCount, setTotalCount] = useState([])
+    const [totalCash, setTotalCash] = useState(0)
     const [userCount, setUserCount] = useState({})
     const classes = useStyles()
 
@@ -14,6 +15,11 @@ export const AdminStatsPage = () => {
         const getReservations = async () => {
             try {
                 const response = await API.get("/stats/reservations")
+                let counter = 0
+                response.data.reservations.forEach((reservation) => {
+                    counter += reservation.totalCash * reservation.totalReservations
+                })
+                setTotalCash(counter)
                 setReservations(response.data.reservations)
                 setTotalCount(response.data.totalCount)
             } catch (e) {
@@ -37,9 +43,76 @@ export const AdminStatsPage = () => {
     return (
 
          <Container >
-             <h1  className={classes.reservationTitle}>Загальна кількість бронювань: {totalCount}</h1>
-             <h1> Статистика по фільмам:</h1>
-             <Grid container spacing={2}>
+             <h1
+                 align="center"
+                 className={classes.reservationTitle}
+             >
+                 Статистика
+             </h1>
+             <Grid className={classes.offset} container spacing={2}>
+                 <Grid item xs={4}>
+                     <Card sx={{ minWidth: 275 }}>
+                         <CardContent>
+                             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                 Всього користувачів
+                             </Typography>
+                             <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                                 {userCount.totalUsers}
+                             </Typography>
+                         </CardContent>
+                     </Card>
+                 </Grid>
+                 <Grid item xs={4}>
+                     <Card sx={{ minWidth: 275 }}>
+                         <CardContent>
+                             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                Користувачів за місяць
+                             </Typography>
+                             <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                                 {userCount.usersPerMonth}
+                             </Typography>
+                         </CardContent>
+                     </Card>
+                 </Grid>
+                 <Grid item xs={4}>
+                     <Card sx={{ minWidth: 275 }}>
+                         <CardContent>
+                             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                 Нових користувачів за неділю
+                             </Typography>
+                             <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                                 {userCount.usersPerWeek}
+                             </Typography>
+                         </CardContent>
+                     </Card>
+                 </Grid>
+                 <Grid item xs={4}>
+                     <Card sx={{ minWidth: 275 }}>
+                         <CardContent>
+                             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                 Всього бронювать
+                             </Typography>
+                             <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                                 {totalCount}
+                             </Typography>
+                         </CardContent>
+                     </Card>
+                 </Grid>
+                 <Grid item xs={4}>
+                     <Card sx={{ minWidth: 275 }}>
+                         <CardContent>
+                             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                 Дохід
+                             </Typography>
+                             <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                                 {totalCash} грн.
+                             </Typography>
+                         </CardContent>
+                     </Card>
+                 </Grid>
+             </Grid>
+             <h1 className={classes.offset} align="center"> Статистика по фільмам</h1>
+             <Grid container spacing={2} className={classes.offset}>
                  {reservations.map((reservation, index) => {
                      return (
                          <Grid item xs={4} >
@@ -48,9 +121,6 @@ export const AdminStatsPage = () => {
                      )
                  })}
              </Grid>
-            <h1>Загальна кількість користувачів: {userCount.totalUsers}</h1>
-            <h1>Загальна кількість користувачів: {userCount.usersPerMonth}</h1>
-            <h1>Загальна кількість користувачів: {userCount.usersPerWeek}</h1>
          </Container>
 
     )

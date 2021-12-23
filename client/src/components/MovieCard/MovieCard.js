@@ -11,7 +11,8 @@ export const MovieCard = props => {
     const classes = useStyles()
     return (
         <div className={classes.background} style={{
-            backgroundImage: `url(${"http://localhost:5000/resource/images/" + props.movie.image})`,
+            backgroundImage: props.movie ?
+                `url(${"http://localhost:5000/resource/images/" + props.movie.image})` : null,
             height: props.height ? props.height : "85vh",
         }}>
             <Link to={`/detail/${props.movie._id}`}>
@@ -39,4 +40,5 @@ export const MovieCard = props => {
             </Link>
          </div>
     )
+
 }
