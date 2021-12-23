@@ -68,21 +68,14 @@ class UserService {
     }
 
 
-    async update(req,res,next) {
-        try {
-
-        } catch (e) {
-
-        }
+    async update(id, user) {
+        const newUser = await UserModel.findByIdAndUpdate(id,user,  {new: true})
+        return newUser
     }
     
 
-    async delete(req,res,next) {
-        try {
-
-        } catch (e) {
-
-        }
+    async delete(id) {
+        await UserModel.findByIdAndDelete(id)
     }
 }
 

@@ -16,6 +16,7 @@ import {AdminHallsPage} from "./pages/Admin/AdminHallsPage/AdminHallsPage"
 import {AdminShowtimesPage} from "./pages/Admin/AdminShowtimePage/AdminShowtimesPage";
 import {AdminReservationsPage} from "./pages/Admin/AdminReservationPage/AdminReservationsPage";
 import {MoviesPage} from "./pages/Public/MoviesPage/MoviesPage";
+import {AdminUsersPage} from "./pages/Admin/AdminUsersPage/AdminUsersPage";
 
 export const useRoutes = isAuthenticated => {
 
@@ -29,6 +30,7 @@ export const useRoutes = isAuthenticated => {
                     <Route path="showtimes" element={<AdminShowtimesPage/>}/>
                     <Route path="reservations" element={<AdminReservationsPage/>}/>
                     <Route path="stats" element={<AdminReservationsPage/>}/>
+                    <Route path="users" element={<AdminUsersPage/>}/>
                 </Route>
                 <Route path="/detail/:id" element={<MovieDetailPage/>}/>
                 <Route path="/reservation/:id" element={<ReservationPage/>}/>

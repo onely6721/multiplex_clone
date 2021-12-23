@@ -24,13 +24,16 @@ class CinemaController{
         try {
             console.log(req.body)
             const id = req.params.id
-            const { name, address, city} = req.body
-            const cinema = await cinemaService.update(id, {
-                name,
-                address,
-                city,
-                image: req.file.filename
-            })
+            const newCinema = req.file ?
+                {
+                    ...req.body,
+                    image: req.file.filename
+                }
+                :
+                {
+                    ...req.body,
+                }
+            const cinema = await cinemaService.update(id, newCinema)
             return res.status(200).json(cinema)
 
         } catch (e) {

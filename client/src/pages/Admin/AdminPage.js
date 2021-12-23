@@ -8,6 +8,7 @@ import {AdminReservationsPage} from "./AdminReservationPage/AdminReservationsPag
 import {AuthContext} from "../../context/AuthContext";
 import {parseJwt} from "../../utils/ParseJWT";
 import {AdminStatsPage} from "./AdminStatsPage/AdminStatsPage";
+import {AdminUsersPage} from "./AdminUsersPage/AdminUsersPage";
 
 export const AdminPage = () => {
 
@@ -33,6 +34,7 @@ export const AdminPage = () => {
                     <Route path="/halls" element={<AdminHallsPage/>}/>
                     <Route path="/showtimes" element={<AdminShowtimesPage/>}/>
                     <Route path="/reservations" element={<AdminReservationsPage/>}/>
+                    <Route path="/users" element={<AdminUsersPage/>}/>
                 </Routes>
 
         )

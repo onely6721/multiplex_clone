@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {API} from "../../../API/api";
-import {CinemasDialog} from "./CinemasDialog/CinemasDialog";
+import {UsersDialog} from "./UsersDialog/UsersDialog";
 import {
     Button,
     Container,
@@ -12,55 +12,48 @@ import {
     TableHead, TablePagination,
     TableRow
 } from "@mui/material";
-import moment from "moment";
 import {TablePaginationActions} from "../TablePaginationActions";
 
-const nullCinema = {
-    name: null,
-    address:null,
-    file: null,
-    city: null,
-}
 
-export const AdminCinemasPage = () => {
-    const [cinemas, setCinemas] = useState([])
+
+
+
+export const AdminUsersPage = () => {
+    const [users, setUsers] = useState([])
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
-    const handleDelete = async (cinema) => {
-        setCinemas(
-            cinemas.filter((item) => {
-                if(item._id !== cinema._id)
+    const handleDelete = async (user) => {
+        setUsers(
+            users.filter((item) => {
+                if(item._id !== user._id)
                     return item
-            }))
-        await API.delete("/cinemas/"+cinema._id)
+        }))
+        await API.delete("/users/"+users._id)
     }
 
-    const handleCreate = async (cinema) => {
-        setCinemas([...cinemas, cinema])
-    }
 
-    const handleUpdate = async (cinema) => {
+    const handleUpdate = async (user) => {
 
-        const newCinemas = cinemas.map((item, index) => {
-            if (item._id === cinema._id) {
-                return cinema
-            }
-            return  item
-        })
-        setCinemas([...newCinemas])
+        const newUsers = users.map((item, index) => {
+                if (item._id === user._id)
+                    return user
+                return  item
+            })
+
+        setUsers([...newUsers])
     }
 
     useEffect(() => {
-        const getCinemas = async () => {
+        const getUsers = async () => {
             try {
-                const response = await API.get("/cinemas")
-                setCinemas(response.data)
+                const response = await API.get("/users")
+                setUsers(response.data)
             } catch (e) {
                 console.log(e.message)
             }
         }
-        getCinemas()
+        getUsers()
     },[])
 
     const handleChangePage = (event, newPage) => {
@@ -73,40 +66,42 @@ export const AdminCinemasPage = () => {
     };
     return (
         <div style={{color:"white", marginTop:"100px"}}>
-            <h1 align="center">Cinemas</h1>
-            <div align="center">
-                <CinemasDialog create={handleCreate}  cinema={nullCinema} method="POST"/>
-            </div>
+            <h1 align="center">Користувачі</h1>
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="right">Назва</TableCell>
-                                <TableCell align="right">Адреса</TableCell>
-                                <TableCell align="right">Місто</TableCell>
+                                <TableCell align="right">Логін</TableCell>
+                                <TableCell align="right">E-mail</TableCell>
+                                <TableCell align="right">Ім'я</TableCell>
+                                <TableCell align="right">Прізвище</TableCell>
+                                <TableCell align="right">Роль</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {(rowsPerPage > 0
-                                    ? cinemas.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                    : cinemas
-                            ).map((cinema) => (
-                                <TableRow key={cinema._id}>
-                                    <TableCell align="right">{cinema.name}</TableCell>
-                                    <TableCell align="right">{cinema.address}</TableCell>
-                                    <TableCell align="right">{cinema.city}</TableCell>
+                                    ? users.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    : users
+                            ).map((user) => (
+                                <TableRow key={user._id}>
+                                    <TableCell align="right">{user.username}</TableCell>
+                                    <TableCell align="right">{user.email}</TableCell>
+                                    <TableCell align="right">{user.firstName}</TableCell>
+                                    <TableCell align="right">{user.secondName}</TableCell>
+                                    <TableCell align="right">{user.role}</TableCell>
                                     <TableCell align="right">
-                                        <CinemasDialog update={handleUpdate} cinema={cinema} method="PUT"/>
+                                        <UsersDialog update={handleUpdate} user={user} />
                                     </TableCell>
                                     <TableCell align="right">
                                         <Button
                                             style={{color: "red"}}
-                                            onClick={() => handleDelete(cinema)}
+                                            onClick={() => handleDelete(user)}
                                         >
-                                            Видалити
-                                        </Button><
-                                    /TableCell>
+                                            Delete
+                                        </Button>
+
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -115,7 +110,7 @@ export const AdminCinemasPage = () => {
                                 <TablePagination
                                     rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
                                     colSpan={3}
-                                    count={cinemas.length}
+                                    count={users.length}
                                     rowsPerPage={rowsPerPage}
                                     page={page}
                                     SelectProps={{

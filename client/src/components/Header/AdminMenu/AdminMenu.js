@@ -37,6 +37,9 @@ export const AdminMenu = props => {
                     <ListItem>
                         <Link to="/admin/reservations" style={{color:"black"}}>Бронювання</Link>
                     </ListItem>
+                    <ListItem>
+                        <Link to="/admin/users" style={{color:"black"}}>Користувачі</Link>
+                    </ListItem>
                 </List>
             </Drawer>
         </div>

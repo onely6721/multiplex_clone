@@ -13,10 +13,9 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import {API} from "../../../../API/api";
 
 const names = [
-    'Жахи',
     'Комедія',
     'Драма',
-    'Рофлянка',
+    'Фантастика',
 ];
 
 export const MoviesDialog = props => {
@@ -60,7 +59,8 @@ export const MoviesDialog = props => {
         if(props.method === "POST") {
             const response = await API.post("/movies/",formData, {
                 headers: {
-                    'content-type': 'multipart/form-data'
+                    'content-type': 'multipart/form-data',
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
                 }
 
             })
@@ -70,7 +70,8 @@ export const MoviesDialog = props => {
         if(props.method === "PUT") {
             const response = await API.put("/movies/" + props.movie._id,formData, {
                 headers: {
-                    'content-type': 'multipart/form-data'
+                    'content-type': 'multipart/form-data',
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
                 }
             })
             props.update(response.data)
@@ -86,10 +87,10 @@ export const MoviesDialog = props => {
     return (
         <div>
             <Button onClick={handleClickOpen}>
-                {props.method === "POST" ? `Create` : `Edit`}
+                {props.method === "POST" ? `Створити` : `Редагувати`}
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} Movie</DialogTitle>
+                <DialogTitle>{props.method === "POST" ? `Створити` : `Редагувати`} Movie</DialogTitle>
                 <DialogContent  style={{padding:"20px"}} >
                     <TextField
                         margin="dense"
@@ -210,8 +211,8 @@ export const MoviesDialog = props => {
                     </LocalizationProvider>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleCreate}>{props.method === "POST" ? `Create` : `Edit`}</Button>
+                    <Button onClick={handleClose}>Скасувати</Button>
+                    <Button onClick={handleCreate}>{props.method === "POST" ? `Створити` : `Редагувати`}</Button>
                 </DialogActions>
             </Dialog>
         </div>

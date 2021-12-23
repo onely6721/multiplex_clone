@@ -33,12 +33,15 @@ export const CinemasDialog = props => {
         formData.append('name', name)
         formData.append('address', address)
         formData.append('city', city)
-        formData.append('image', file)
-
+        if(file)
+            formData.append('image', file)
+        else
+            formData.append('image', props.cinema.image)
         if(props.method === "POST") {
             const response = await API.post("/cinemas/",formData, {
                 headers: {
-                    'content-type': 'multipart/form-data'
+                    'content-type': 'multipart/form-data',
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
                 }
             })
             props.create(response.data)
@@ -47,7 +50,8 @@ export const CinemasDialog = props => {
         if(props.method === "PUT") {
             const response = await API.put("/cinemas/" + props.cinema._id,formData, {
                 headers: {
-                    'content-type': 'multipart/form-data'
+                    'content-type': 'multipart/form-data',
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
                 }
             })
             props.update(response.data)
@@ -63,10 +67,10 @@ export const CinemasDialog = props => {
     return (
         <div>
             <Button  onClick={handleClickOpen}>
-                {props.method === "POST" ? `Create` : `Edit`}
+                {props.method === "POST" ? `Створити` : `Редагувати`}
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} Movie</DialogTitle>
+                <DialogTitle>{props.method === "POST" ? `Створити` : `Редагувати`} Фільм</DialogTitle>
                 <DialogContent  style={{padding:"20px"}} >
                     <TextField
                         margin="dense"
@@ -120,8 +124,8 @@ export const CinemasDialog = props => {
                     </FormControl>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleCreate}>{props.method === "POST" ? `Create` : `Edit`}</Button>
+                    <Button onClick={handleClose}>Скасувати</Button>
+                    <Button onClick={handleCreate}>{props.method === "POST" ? `Створити` : `Редагувати`}</Button>
                 </DialogActions>
             </Dialog>
         </div>

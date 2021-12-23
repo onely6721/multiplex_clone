@@ -50,18 +50,22 @@ class UserController{
 
     async update(req,res,next) {
         try {
-
+            const id = req.params.id
+            const user = await userService.update(id, req.body)
+            return res.status(200).json(user)
         } catch (e) {
-
+            console.log(e.message)
         }
     }
     
 
     async delete(req,res,next) {
         try {
-
+            const id = req.params.id
+            await userService.delete(id)
+            return res.status(200).json({message: "успешно удален"})
         } catch (e) {
-
+            console.log(e.message)
         }
     }
 }

@@ -74,12 +74,19 @@ export const ShowtimesDialog = props => {
         formData.append('hallId', showtime.hallId)
 
         if(props.method === "POST") {
-            const response = await API.post("/showtimes/",formData)
+            const response = await API.post("/showtimes/",formData, {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                }}
+            )
             props.create(response.data)
             console.log(response.data)
         }
         if(props.method === "PUT") {
-            const response = await API.put("/showtimes/" + props.showtime._id, formData)
+            const response = await API.put("/showtimes/" + props.showtime._id, formData, {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                }})
             props.update(response.data)
             console.log(response.data)
         }
@@ -93,10 +100,10 @@ export const ShowtimesDialog = props => {
     return (
         <div>
             <Button  onClick={handleClickOpen}>
-                {props.method === "POST" ? `Create` : `Edit`}
+                {props.method === "POST" ? `Створити` : `Редагувати`}
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} Showtime</DialogTitle>
+                <DialogTitle>{props.method === "POST" ? `Створити` : `Редагувати`} Showtime</DialogTitle>
                 <DialogContent  style={{padding:"20px"}} >
                     <TextField
                         margin="dense"
@@ -201,7 +208,7 @@ export const ShowtimesDialog = props => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleCreate}>{props.method === "POST" ? `Create` : `Edit`}</Button>
+                    <Button onClick={handleCreate}>{props.method === "POST" ? `Створити` : `Редагувати`}</Button>
                 </DialogActions>
             </Dialog>
         </div>

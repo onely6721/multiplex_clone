@@ -46,12 +46,18 @@ export const HallsDialog = props => {
         formData.append('cinema', cinema)
 
         if(props.method === "POST") {
-            const response = await API.post("/halls/",formData)
+            const response = await API.post("/halls/",formData, {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                }})
             console.log(response.data)
             props.create(response.data)
         }
         if(props.method === "PUT") {
-            const response = await API.put("/halls/" + props.hall._id,formData)
+            const response = await API.put("/halls/" + props.hall._id,formData, {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                }})
             console.log(response.data)
             props.update(response.data)
         }
@@ -65,10 +71,10 @@ export const HallsDialog = props => {
     return (
         <div>
             <Button onClick={handleClickOpen}>
-                {props.method === "POST" ? `Create` : `Edit`}
+                {props.method === "POST" ? `Створити` : `Редагувати`}
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} Hall</DialogTitle>
+                <DialogTitle>{props.method === "POST" ? `Створити` : `Редагувати`} зал</DialogTitle>
                 <DialogContent  style={{padding:"20px"}} >
                     <TextField
                         margin="dense"
@@ -117,8 +123,8 @@ export const HallsDialog = props => {
                     </FormControl>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleCreate}>{props.method === "POST" ? `Create` : `Edit`}</Button>
+                    <Button onClick={handleClose}>Скасувати</Button>
+                    <Button onClick={handleCreate}>{props.method === "POST" ? `Створити` : `Редагувати`}</Button>
                 </DialogActions>
             </Dialog>
         </div>

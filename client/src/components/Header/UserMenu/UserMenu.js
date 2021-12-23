@@ -76,7 +76,7 @@ export const UserMenu = props => {
                         style={{color:"black"}}
                         to='/movies'
                     >
-                        Все фильмы
+                        Усі фільми
                     </Link>
                 </MenuItem>
                 {
@@ -88,7 +88,7 @@ export const UserMenu = props => {
                                     style={{color:"black"}}
                                     to='/profile'
                                 >
-                                    Бронь
+                                    Бронювання
                                 </Link>
                             </MenuItem>
                             <MenuItem
@@ -98,7 +98,7 @@ export const UserMenu = props => {
                                     handleClose()
                                 }}
                             >
-                                Logout
+                                Вийти
                             </MenuItem>
                         </>
                         :

@@ -143,7 +143,7 @@ export const ReservationPage = props => {
                     className={classes.buttonCheckout}
                     onClick={() => setOpen(!open)}
                 >
-                    Купить
+                    Забронювати
                 </Button>
             </div>
         <Drawer
@@ -174,7 +174,7 @@ export const ReservationPage = props => {
                         className={classes.buttonCheckout}
                         onClick={handleConfirm}
                     >
-                        Замовити
+                        Підтвердити
                     </Button>
                 </div>
             </div>

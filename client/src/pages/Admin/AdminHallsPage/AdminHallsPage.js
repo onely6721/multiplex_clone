@@ -88,17 +88,22 @@ export const AdminHallsPage = () => {
     };
     return (
         <div style={{color:"white", marginTop:"100px"}}>
-            <h1 align="center">Halls</h1>
-            <HallsDialog  create={handleCreate} hall={nullHall} method="POST"/>
+            <h1 align="center">
+                Зали
+            </h1>
+            <div align="center">
+                <HallsDialog  create={handleCreate} hall={nullHall} method="POST"/>
+            </div>
+
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="right">Название</TableCell>
+                                <TableCell align="right">Назван</TableCell>
                                 <TableCell align="right">Кинотеатр</TableCell>
-                                <TableCell align="right">Рядов</TableCell>
-                                <TableCell align="right">Мест</TableCell>
+                                <TableCell align="right">Рядів</TableCell>
+                                <TableCell align="right">Місць в ряді</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -119,7 +124,7 @@ export const AdminHallsPage = () => {
                                             style={{color: "red"}}
                                             onClick={() => handleDelete(hall)}
                                         >
-                                            Delete
+                                            Видалити
                                         </Button><
                                     /TableCell>
                                 </TableRow>

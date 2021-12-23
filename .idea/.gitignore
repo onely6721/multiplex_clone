@@ -4,5 +4,6 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-
+.jpg
+.png
 node_modules

@@ -75,7 +75,10 @@ export const ScheduleDialog = props => {
         formData.append('hallId', showtime.hallId)
 
 
-        const response = await API.post("/showtimes/generateSchedule",formData)
+        const response = await API.post("/showtimes/generateSchedule",formData, {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem('token')}`,
+            }})
         props.create(response.data)
 
 
@@ -89,10 +92,10 @@ export const ScheduleDialog = props => {
     return (
         <div>
             <Button  onClick={handleClickOpen}>
-                Generate
+                Згенерувати графік
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} Showtime</DialogTitle>
+                <DialogTitle>Згенерувати графік</DialogTitle>
                 <DialogContent  style={{padding:"20px"}} >
                     <TextField
                         margin="dense"
@@ -199,8 +202,8 @@ export const ScheduleDialog = props => {
                     </LocalizationProvider>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleCreate}>Ok</Button>
+                    <Button onClick={handleClose}>Скасувати</Button>
+                    <Button onClick={handleCreate}>Згенерувати</Button>
                 </DialogActions>
             </Dialog>
         </div>

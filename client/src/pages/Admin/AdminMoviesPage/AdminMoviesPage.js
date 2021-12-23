@@ -78,9 +78,12 @@ export const AdminMoviesPage = () => {
     };
     return (
         <div style={{color:"white", marginTop:"100px"}}>
-            <h1 align="center">Films
-                <MoviesDialog create={handleCreate} method="POST" movie={nullMovie}/>
+            <h1 align="center">
+                Фільми
             </h1>
+            <div align="center">
+                <MoviesDialog create={handleCreate} method="POST" movie={nullMovie}/>
+            </div>
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -93,8 +96,6 @@ export const AdminMoviesPage = () => {
                                 <TableCell align="right">Release Date</TableCell>
                                 <TableCell align="right">End Date</TableCell>
                                 <TableCell align="right">Duration</TableCell>
-                                <TableCell align="right">Edit</TableCell>
-                                <TableCell align="right">Delete</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -120,7 +121,7 @@ export const AdminMoviesPage = () => {
                                             style={{color: "red"}}
                                             onClick={() => handleDelete(movie)}
                                         >
-                                            Delete
+                                            Видалити
                                         </Button><
                                     /TableCell>
                                 </TableRow>

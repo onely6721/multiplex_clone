@@ -86,12 +86,16 @@ export const AdminReservationsPage = () => {
     };
     return (
         <div style={{color:"white", marginTop:"100px"}}>
-            <h1 align="center">Halls</h1>
-            <ReservationDialog
-                create={handleCreate}
-                reservation={nullReservation}
-                method="POST"
-            />
+            <h1 align="center">
+                Halls
+            </h1>
+            <div align="center">
+                <ReservationDialog
+                    create={handleCreate}
+                    reservation={nullReservation}
+                    method="POST"
+                />
+            </div>
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -126,7 +130,7 @@ export const AdminReservationsPage = () => {
                                             style={{color: "red"}}
                                             onClick={() => handleDelete(reservation)}
                                         >
-                                            Delete
+                                            Видалити
                                         </Button><
                                     /TableCell>
                                 </TableRow>

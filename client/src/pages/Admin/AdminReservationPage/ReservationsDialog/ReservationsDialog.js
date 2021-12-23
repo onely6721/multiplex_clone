@@ -44,11 +44,19 @@ export const ReservationDialog = props => {
         formData.append('owner', user)
 
         if(props.method === "POST") {
-            const response = await API.post("/reservations/",formData)
+            const response = await API.post("/reservations/",formData, {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                }}
+            )
             props.create(response.data)
         }
         if(props.method === "PUT") {
-            const response = await API.put("/reservations/" + props.reservation._id,formData)
+            const response = await API.put("/reservations/" + props.reservation._id,formData, {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                }}
+            )
             console.log(response.data)
             props.update(response.data)
 
@@ -64,10 +72,10 @@ export const ReservationDialog = props => {
     return (
         <div>
             <Button onClick={handleClickOpen}>
-                {props.method === "POST" ? `Create` : `Edit`}
+                {props.method === "POST" ? `Створити` : `Редагувати`}
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} Hall</DialogTitle>
+                <DialogTitle>{props.method === "POST" ? `Створити` : `Редагувати`} Бронювання</DialogTitle>
                 <DialogContent  style={{padding:"20px"}} >
                     <TextField
                         margin="dense"
@@ -109,7 +117,7 @@ export const ReservationDialog = props => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleCreate}>{props.method === "POST" ? `Create` : `Edit`}</Button>
+                    <Button onClick={handleCreate}>{props.method === "POST" ? `Створити` : `Редагувати`}</Button>
                 </DialogActions>
             </Dialog>
         </div>

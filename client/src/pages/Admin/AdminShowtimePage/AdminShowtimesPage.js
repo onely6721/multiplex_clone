@@ -125,9 +125,13 @@ export const AdminShowtimesPage = () => {
     };
     return (
         <div style={{color:"white", marginTop:"100px"}}>
-            <h1 align="center">Halls</h1>
-            <ShowtimesDialog  create={handleCreate} showtime={nullShowtime} method="POST"/>
-            <ScheduleDialog create={generateSchedule}/>
+            <h1 align="center">
+                Halls
+            </h1>
+            <div align="center">
+                <ShowtimesDialog  create={handleCreate} showtime={nullShowtime} method="POST"/>
+                <ScheduleDialog create={generateSchedule}/>
+            </div>
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -163,7 +167,7 @@ export const AdminShowtimesPage = () => {
                                             style={{color: "red"}}
                                             onClick={() => handleDelete(showtime)}
                                         >
-                                            Delete
+                                            Видалити
                                         </Button><
                                     /TableCell>
                                 </TableRow>
