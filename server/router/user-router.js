@@ -5,8 +5,8 @@ const adminMiddleware = require('../middlewares/admin-middleware')
 
 router.post('/login', userController.login )
 router.post('/registration', userController.registration )
-router.get('/', userController.getUsers)
-router.put('/:id', userController.update)
-router.get('/:id', userController.getById)
-router.delete('/:id', userController.delete)
+router.get('/', adminMiddleware ,userController.getUsers)
+router.put('/:id', adminMiddleware,userController.update)
+router.get('/:id', adminMiddleware,userController.getById)
+router.delete('/:id', adminMiddleware,userController.delete)
 module.exports = router
