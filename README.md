@@ -44,21 +44,26 @@ cd client npm start
 
 **Main Page**
 
-![MainPage](https://github.com/onely6721/multiplex_clone/blob/master/Camera%20Roll/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B9.png)
+![MainPage](https://github.com/onely6721/multiplex_clone/blob/master/images/Main%20page.png)
+
+
+**Movie list**
+
+![MovieLost](https://github.com/onely6721/multiplex_clone/blob/master/images/Film%20List.png)
 
 **Reservation Page**
 
-![ReservationPage](https://github.com/onely6721/multiplex_clone/blob/master/Camera%20Roll/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B92.png)
+![ReservationPage](https://github.com/onely6721/multiplex_clone/blob/master/images/Reservation%20Page.png)
 
 **Reservation dialog**
 
-![Reservate](https://github.com/onely6721/multiplex_clone/blob/master/Camera%20Roll/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B97.png)
+![Reservate](https://github.com/onely6721/multiplex_clone/blob/master/images/Reservation%20dialog.png)
 
 **Admin Menu**
 
-![AdminMenu](https://github.com/onely6721/multiplex_clone/blob/master/Camera%20Roll/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B94.png)
+![AdminMenu](https://github.com/onely6721/multiplex_clone/blob/master/images/Admin%20menu.png)
 
 **Admin movie page**
 
-![AdminPage](https://github.com/onely6721/multiplex_clone/blob/master/Camera%20Roll/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B95.png)
+![AdminPage](https://github.com/onely6721/multiplex_clone/blob/master/images/Admin%20Movie%20Page.png)
 
