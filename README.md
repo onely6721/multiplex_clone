@@ -1,4 +1,4 @@
-# multiplex_clone
+# Online booking system
 
 web-app online booking system
 
@@ -30,7 +30,7 @@ cd client npm start
 # Screenshots
 
 **Main Page**
-![MainPage](https://i.ibb.co/MPFHK9T/image.png)
+![MainPage](https://i.ibb.co/Snypz7P/image.png)
 **Reservation Page**
 ![ReservationPage](https://i.ibb.co/12x3HvW/2.png)
 **Reservation dialog**
