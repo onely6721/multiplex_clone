@@ -55,10 +55,6 @@ cd client npm start
 
 ![ReservationPage](https://github.com/onely6721/multiplex_clone/blob/master/images/Reservation%20Page.png)
 
-**Reservation dialog**
-
-![Reservate](https://github.com/onely6721/multiplex_clone/blob/master/images/Reservation%20dialog.png)
-
 **Admin Menu**
 
 ![AdminMenu](https://github.com/onely6721/multiplex_clone/blob/master/images/Admin%20menu.png)
