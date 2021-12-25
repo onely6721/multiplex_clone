@@ -1,6 +1,9 @@
-# Online booking system
+Оператор ЕВМ, [2021-12-25 6:11 PM]
+<h1 align="center">
+Web-app online booking system
+</h1>
 
-web-app online booking system
+# Stack
 
 - node.js
 - express
@@ -26,6 +29,16 @@ cd client npm install && npm start
 cd server npm run dev
 cd client npm start
 ```
+
+# Features!
+
+- Add / Update / Delete Movies
+- Add / Update / Delete Cinemas
+- Add / Update / Delete Halls
+- Add / Update / Delete / Showtimes
+- Add / Update / Delete Reservations
+- Add / Update / Delete Users
+- Generate schedule for showtimes
 
 # Screenshots
 
