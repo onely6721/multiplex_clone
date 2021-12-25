@@ -30,5 +30,9 @@ cd client npm start
 
 **Screenshots**
 
-![MainPage](https://i.ibb.co/GnKXPbc/MainPage.png)
-![ReservationPage](https://i.ibb.co/vHDjhbx/Main.png)
+![MainPage](https://i.ibb.co/MPFHK9T/image.png)
+![ReservationPage](https://i.ibb.co/12x3HvW/2.png)
+![Reservate](https://i.ibb.co/G9FwCs8/7.pngg)
+![AdminMenu](https://i.ibb.co/wh7prFM/4.png)
+![AdminPage](https://i.ibb.co/3sp7rCM/5.png)
+
