@@ -31,7 +31,7 @@ cd client npm start
 
 **Main Page**
 
-![MainPage](https://github.com/onely6721/multiplex_clone/tree/master/Безымянный.png)
+![MainPage](https://github.com/onely6721/multiplex_clone/blob/master/Camera%20Roll/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B9.png)
 
 **Reservation Page**
 
