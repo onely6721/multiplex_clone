@@ -1,4 +1,3 @@
-Оператор ЕВМ, [2021-12-25 6:11 PM]
 <h1 align="center">
 Web-app online booking system
 </h1>
