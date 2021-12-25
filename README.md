@@ -9,7 +9,7 @@ web-app online booking system
 - material ui
 
 
-**Installation**
+# Installation
 ```
 git clone https://github.com/onely6721/multiplex_clone/
 
@@ -21,7 +21,7 @@ cd client npm install && npm start
 ```
 
 
-**Run app**
+# Run app
 ```
 cd server npm run dev
 cd client npm start
