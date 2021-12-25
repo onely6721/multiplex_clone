@@ -30,9 +30,14 @@ cd client npm start
 
 **Screenshots**
 
+**Main Page**
 ![MainPage](https://i.ibb.co/MPFHK9T/image.png)
+**Reservation Page**
 ![ReservationPage](https://i.ibb.co/12x3HvW/2.png)
+**Reservation dialog**
 ![Reservate](https://i.ibb.co/G9FwCs8/7.png)
+**Admin Menu**
 ![AdminMenu](https://i.ibb.co/wh7prFM/4.png)
+**Admin movie page**
 ![AdminPage](https://i.ibb.co/3sp7rCM/5.png)
 
