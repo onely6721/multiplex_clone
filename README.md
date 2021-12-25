@@ -35,17 +35,17 @@ cd client npm start
 
 **Reservation Page**
 
-![ReservationPage](https://i.ibb.co/12x3HvW/2.png)
+![ReservationPage](https://github.com/onely6721/multiplex_clone/blob/master/Camera%20Roll/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B92.png)
 
 **Reservation dialog**
 
-![Reservate](https://i.ibb.co/G9FwCs8/7.png)
+![Reservate](https://github.com/onely6721/multiplex_clone/blob/master/Camera%20Roll/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B97.png)
 
 **Admin Menu**
 
-![AdminMenu](https://i.ibb.co/wh7prFM/4.png)
+![AdminMenu](https://github.com/onely6721/multiplex_clone/blob/master/Camera%20Roll/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B94.png)
 
 **Admin movie page**
 
-![AdminPage](https://i.ibb.co/3sp7rCM/5.png)
+![AdminPage](https://github.com/onely6721/multiplex_clone/blob/master/Camera%20Roll/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B95.png)
 
