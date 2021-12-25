@@ -31,7 +31,7 @@ cd client npm start
 
 **Main Page**
 
-![MainPage](https://i.ibb.co/vVRTTd2/image.png)
+![MainPage](https://github.com/onely6721/multiplex_clone/tree/master/Безымянный.png)
 
 **Reservation Page**
 
