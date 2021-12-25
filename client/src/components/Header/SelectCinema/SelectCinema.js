@@ -32,7 +32,7 @@ export const SelectCinema = props => {
                 htmlFor="grouped-select"
                 style={{color:"white"}}
             >
-                Кинотеатр
+                Cinema
             </InputLabel>
             <Select
                 id="grouped-select"

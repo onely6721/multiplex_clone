@@ -87,15 +87,15 @@ export const MoviesDialog = props => {
     return (
         <div>
             <Button onClick={handleClickOpen}>
-                {props.method === "POST" ? `Створити` : `Редагувати`}
+                {props.method === "POST" ? `Create` : `Edit`}
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{props.method === "POST" ? `Створити` : `Редагувати`} Movie</DialogTitle>
+                <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} movie</DialogTitle>
                 <DialogContent  style={{padding:"20px"}} >
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Название"
+                        label="Title"
                         defaultValue={movie.title}
                         onChange={(e) => setMovie({...movie, title: e.target.value })}
                         fullWidth
@@ -103,7 +103,7 @@ export const MoviesDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Описание"
+                        label="Description"
                         defaultValue={movie.description}
                         onChange={(e) => setMovie({...movie, description: e.target.value })}
                         fullWidth
@@ -112,7 +112,7 @@ export const MoviesDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Рейтинг IMDB"
+                        label="Rating IMDB"
                         defaultValue={movie.ratingIMDB}
                         onChange={(e) => setMovie({...movie, ratingIMDB: e.target.value })}
 
@@ -120,7 +120,7 @@ export const MoviesDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Режиссер"
+                        label="Director"
                         defaultValue={movie.director}
                         onChange={(e) => setMovie({...movie, director: e.target.value })}
                         style={{marginLeft: "20px"}}
@@ -129,7 +129,7 @@ export const MoviesDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Бюджет"
+                        label="Cast"
                         onChange={(e) => setMovie({...movie, cast: e.target.value })}
                         defaultValue={movie.cast}
 
@@ -137,7 +137,7 @@ export const MoviesDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Длительность"
+                        label="Duration"
                         onChange={(e) => setMovie({...movie, duration: e.target.value })}
                         defaultValue={movie.duration}
                         style={{marginLeft: "20px"}}
@@ -145,7 +145,7 @@ export const MoviesDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Язык"
+                        label="Language"
                         defaultValue={movie.language}
                         onChange={(e) => setMovie({...movie, language: e.target.value })}
                     />
@@ -164,7 +164,7 @@ export const MoviesDialog = props => {
                     </label>
 
                     <FormControl sx={{ width: 300, marginTop: 3}}>
-                        <InputLabel id="demo-multiple-name-label">Жанр</InputLabel>
+                        <InputLabel id="demo-multiple-name-label">Genres</InputLabel>
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
@@ -188,7 +188,7 @@ export const MoviesDialog = props => {
                     <br/>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
-                            label="Дата выхода"
+                            label="Start Date"
                             value={movie.releaseDate}
                             onChange={(newValue) => {
                                setMovie({...movie, releaseDate: newValue})
@@ -201,7 +201,7 @@ export const MoviesDialog = props => {
 
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
-                            label="Дата окончания"
+                            label="End Date"
                             value={movie.endDate}
                             onChange={(newValue) => {
                                 setMovie({...movie, endDate: newValue})
@@ -211,8 +211,8 @@ export const MoviesDialog = props => {
                     </LocalizationProvider>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Скасувати</Button>
-                    <Button onClick={handleCreate}>{props.method === "POST" ? `Створити` : `Редагувати`}</Button>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleCreate}>{props.method === "POST" ? `Create` : `Edit`}</Button>
                 </DialogActions>
             </Dialog>
         </div>

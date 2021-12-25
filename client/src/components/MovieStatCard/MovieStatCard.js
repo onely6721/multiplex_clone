@@ -22,10 +22,10 @@ export const MovieStatCard = props => {
                         {props.reservation.movie.title}
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                        Кількість бронювань: {props.reservation.totalReservations}
+                        Count reservations: {props.reservation.totalReservations}
                     </Typography>
                     <Typography color="text.secondary">
-                        Дохід: {props.reservation.totalCash} грн.
+                        Earning: {props.reservation.totalCash}$
                     </Typography>
                 </CardContent>
             </Card>

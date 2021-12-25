@@ -100,10 +100,10 @@ export const AdminHallsPage = () => {
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="right">Назван</TableCell>
-                                <TableCell align="right">Кинотеатр</TableCell>
-                                <TableCell align="right">Рядів</TableCell>
-                                <TableCell align="right">Місць в ряді</TableCell>
+                                <TableCell align="right">Name</TableCell>
+                                <TableCell align="right">Cinema</TableCell>
+                                <TableCell align="right">Rows</TableCell>
+                                <TableCell align="right">Columns</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -124,7 +124,7 @@ export const AdminHallsPage = () => {
                                             style={{color: "red"}}
                                             onClick={() => handleDelete(hall)}
                                         >
-                                            Видалити
+                                            Delete
                                         </Button><
                                     /TableCell>
                                 </TableRow>

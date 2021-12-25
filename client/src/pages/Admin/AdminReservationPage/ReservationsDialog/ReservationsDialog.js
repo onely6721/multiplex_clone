@@ -72,10 +72,10 @@ export const ReservationDialog = props => {
     return (
         <div>
             <Button onClick={handleClickOpen}>
-                {props.method === "POST" ? `Створити` : `Редагувати`}
+                {props.method === "POST" ? `Create` : `Edit`}
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{props.method === "POST" ? `Створити` : `Редагувати`} Бронювання</DialogTitle>
+                <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} Reservations</DialogTitle>
                 <DialogContent  style={{padding:"20px"}} >
                     <TextField
                         margin="dense"
@@ -95,7 +95,7 @@ export const ReservationDialog = props => {
                     />
 
                     <FormControl sx={{ width: 300, marginTop: 3}}>
-                        <InputLabel id="demo-multiple-name-label">Город</InputLabel>
+                        <InputLabel id="demo-multiple-name-label">City</InputLabel>
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
@@ -117,7 +117,7 @@ export const ReservationDialog = props => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleCreate}>{props.method === "POST" ? `Створити` : `Редагувати`}</Button>
+                    <Button onClick={handleCreate}>{props.method === "POST" ? `Create` : `Edit`}</Button>
                 </DialogActions>
             </Dialog>
         </div>

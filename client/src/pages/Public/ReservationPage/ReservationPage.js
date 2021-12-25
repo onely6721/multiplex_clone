@@ -23,7 +23,7 @@ export const ReservationPage = props => {
     const handleConfirm =  async () => {
         try {
             if(!isAuth) {
-              alert("Авторизуйтесь")
+              alert("No auth")
               return
             }
             if(reservations.length === 0)
@@ -98,11 +98,11 @@ export const ReservationPage = props => {
         <Container style={{marginTop:"100px"}}>
 
             <h1 className={classes.movieTitle}>{showtime.movieTitle}</h1>
-            <Typography>Кинотеатр: {showtime.cinemaName}</Typography>
-            <Typography>Зал: {showtime.hallName}</Typography>
-            <Typography>Початок: {showtime.startAt}</Typography>
-            <Typography>Квиток коштує: {showtime.price} грн.</Typography>
-            <h2 align="center">Кінозал</h2>
+            <Typography>Cinema: {showtime.cinemaName}</Typography>
+            <Typography>Hall: {showtime.hallName}</Typography>
+            <Typography>Start at: {showtime.startAt}</Typography>
+            <Typography>Price: {showtime.price}$.</Typography>
+            <h2 align="center">Hall</h2>
             <div
                 style={{
                     gridTemplateColumns: `repeat(${showtime.columns}, 1fr)`,
@@ -143,7 +143,7 @@ export const ReservationPage = props => {
                     className={classes.buttonCheckout}
                     onClick={() => setOpen(!open)}
                 >
-                    Забронювати
+                    Reserve
                 </Button>
             </div>
         <Drawer
@@ -152,7 +152,7 @@ export const ReservationPage = props => {
             anchor="bottom"
         >
             <div className={classes.reservationCheckout}>
-                <h1>Квитки:</h1>
+                <h1>Tickets:</h1>
                 {reservations.map ((reservation) => {
                     return (
                         <div style={{
@@ -162,19 +162,19 @@ export const ReservationPage = props => {
                             padding: "10px",
                             marginTop:"10px",
                         }} >
-                            <Typography>Ряд: {reservation.row} Місце: {reservation.column}</Typography>
-                            <h4>Ціна: {showtime.price} грн</h4>
+                            <Typography>Row: {reservation.row} Place: {reservation.column}</Typography>
+                            <h4>Price: {showtime.price}$ </h4>
                         </div>
                     )
                 })}
-                <h1 align="center">Всього до сплати: {showtime.price*reservations.length} грн</h1>
+                <h1 align="center">Total to pay: {showtime.price*reservations.length}$</h1>
                 <div align="center">
                     <Button
                         variant="outlined"
                         className={classes.buttonCheckout}
                         onClick={handleConfirm}
                     >
-                        Підтвердити
+                        Accept
                     </Button>
                 </div>
             </div>

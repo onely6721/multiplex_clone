@@ -31,7 +31,7 @@ export const MovieDescription = props => {
                     <img src={link} className={classes.poster} alt=""/>
                 </Grid>
                 <Grid item  md={2} >
-                    <Typography>Період прокату:</Typography>
+                    <Typography>:</Typography>
                     <Typography>Рейтинг Imdb:</Typography>
                     <Typography>Режисер:</Typography>
                     <Typography>Жанри:</Typography>

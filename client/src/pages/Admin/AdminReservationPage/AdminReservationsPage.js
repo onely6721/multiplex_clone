@@ -102,9 +102,9 @@ export const AdminReservationsPage = () => {
                         <TableHead>
                             <TableRow>
                                 <TableCell align="right">ShowtimeId</TableCell>
-                                <TableCell align="right">ряд</TableCell>
-                                <TableCell align="right">місце</TableCell>
-                                <TableCell align="right">Власник</TableCell>
+                                <TableCell align="right">Row</TableCell>
+                                <TableCell align="right">Place</TableCell>
+                                <TableCell align="right">Owner</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -130,7 +130,7 @@ export const AdminReservationsPage = () => {
                                             style={{color: "red"}}
                                             onClick={() => handleDelete(reservation)}
                                         >
-                                            Видалити
+                                            Delete
                                         </Button><
                                     /TableCell>
                                 </TableRow>

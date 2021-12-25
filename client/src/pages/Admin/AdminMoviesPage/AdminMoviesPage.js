@@ -79,7 +79,7 @@ export const AdminMoviesPage = () => {
     return (
         <div style={{color:"white", marginTop:"100px"}}>
             <h1 align="center">
-                Фільми
+                Movies
             </h1>
             <div align="center">
                 <MoviesDialog create={handleCreate} method="POST" movie={nullMovie}/>
@@ -121,7 +121,7 @@ export const AdminMoviesPage = () => {
                                             style={{color: "red"}}
                                             onClick={() => handleDelete(movie)}
                                         >
-                                            Видалити
+                                            Delete
                                         </Button><
                                     /TableCell>
                                 </TableRow>

@@ -76,7 +76,7 @@ export const UserMenu = props => {
                         style={{color:"black"}}
                         to='/movies'
                     >
-                        Усі фільми
+                        All films
                     </Link>
                 </MenuItem>
                 {
@@ -88,7 +88,7 @@ export const UserMenu = props => {
                                     style={{color:"black"}}
                                     to='/profile'
                                 >
-                                    Бронювання
+                                    My reservations
                                 </Link>
                             </MenuItem>
                             <MenuItem
@@ -98,7 +98,7 @@ export const UserMenu = props => {
                                     handleClose()
                                 }}
                             >
-                                Вийти
+                                Logout
                             </MenuItem>
                         </>
                         :
@@ -109,7 +109,7 @@ export const UserMenu = props => {
                                     setOpenLogin(!openLogin)
                                 }}
                             >
-                                Увійти
+                                Login
                             </MenuItem>
                             <MenuItem
                                 onClick={() => {
@@ -117,7 +117,7 @@ export const UserMenu = props => {
                                     setOpenRegistration(!openRegistration)
                                 }}
                             >
-                                Реєстрація
+                                Registration
                             </MenuItem>
                         </>
                 }

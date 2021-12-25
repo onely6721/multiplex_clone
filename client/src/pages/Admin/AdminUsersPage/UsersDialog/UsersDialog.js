@@ -57,7 +57,7 @@ export const UsersDialog = props => {
     return (
         <div>
             <Button onClick={handleClickOpen}>
-                Редагувати
+                Edit
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle> Користувач</DialogTitle>
@@ -84,7 +84,7 @@ export const UsersDialog = props => {
                         name="firstName"
                         margin="dense"
                         id="outlined-helperText"
-                        label="Ім'я"
+                        label="first name"
                         defaultValue={user.firstName}
                         onChange={handleChange}
                         fullWidth
@@ -93,13 +93,13 @@ export const UsersDialog = props => {
                         name="secondName"
                         margin="dense"
                         id="outlined-helperText"
-                        label="Ім'я"
+                        label="second name"
                         defaultValue={user.secondName}
                         onChange={handleChange}
                         fullWidth
                     />
                     <FormControl sx={{ width: 300, marginTop: 3}}>
-                        <InputLabel id="demo-multiple-name-label">Роль</InputLabel>
+                        <InputLabel id="demo-multiple-name-label">Role</InputLabel>
                         <Select
                             labelId="demo-multiple-name-label"
                             name="role"
@@ -121,8 +121,8 @@ export const UsersDialog = props => {
                     </FormControl>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cкасувати</Button>
-                    <Button onClick={handleCreate}>Редагувати</Button>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleCreate}>Edit</Button>
                 </DialogActions>
             </Dialog>
         </div>

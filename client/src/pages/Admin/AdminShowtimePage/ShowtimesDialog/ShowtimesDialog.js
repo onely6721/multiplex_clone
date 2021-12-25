@@ -100,15 +100,15 @@ export const ShowtimesDialog = props => {
     return (
         <div>
             <Button  onClick={handleClickOpen}>
-                {props.method === "POST" ? `Створити` : `Редагувати`}
+                {props.method === "POST" ? `Create` : `Edit`}
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{props.method === "POST" ? `Створити` : `Редагувати`} Showtime</DialogTitle>
+                <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} showtime</DialogTitle>
                 <DialogContent  style={{padding:"20px"}} >
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Початок о"
+                        label="Start at"
                         defaultValue={showtime.startAt}
                         onChange={(e) => setShowtime({...showtime, startAt: e.target.value})}
                         fullWidth
@@ -116,13 +116,13 @@ export const ShowtimesDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Ціна за квиток"
+                        label="Price"
                         defaultValue={showtime.price}
                         onChange={(e) => setShowtime({...showtime, price: e.target.value})}
                         fullWidth
                     />
                     <FormControl sx={{ width: 300, marginTop: 3}}>
-                        <InputLabel id="demo-multiple-name-label">Фильм</InputLabel>
+                        <InputLabel id="demo-multiple-name-label">Movie</InputLabel>
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
@@ -142,7 +142,7 @@ export const ShowtimesDialog = props => {
                         </Select>
                     </FormControl>
                     <FormControl sx={{ width: 300, marginTop: 3}}>
-                        <InputLabel id="demo-multiple-name-label">Кинотеатр</InputLabel>
+                        <InputLabel id="demo-multiple-name-label">Cinema</InputLabel>
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
@@ -162,7 +162,7 @@ export const ShowtimesDialog = props => {
                         </Select>
                     </FormControl>
                     <FormControl sx={{ width: 300, marginTop: 3}}>
-                        <InputLabel id="demo-multiple-name-label">Зал</InputLabel>
+                        <InputLabel id="demo-multiple-name-label">Hall</InputLabel>
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
@@ -208,7 +208,7 @@ export const ShowtimesDialog = props => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleCreate}>{props.method === "POST" ? `Створити` : `Редагувати`}</Button>
+                    <Button onClick={handleCreate}>{props.method === "POST" ? `Create` : `Edit`}</Button>
                 </DialogActions>
             </Dialog>
         </div>

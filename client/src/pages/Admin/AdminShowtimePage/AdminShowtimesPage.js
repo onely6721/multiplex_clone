@@ -126,7 +126,7 @@ export const AdminShowtimesPage = () => {
     return (
         <div style={{color:"white", marginTop:"100px"}}>
             <h1 align="center">
-                Halls
+                Showtimes
             </h1>
             <div align="center">
                 <ShowtimesDialog  create={handleCreate} showtime={nullShowtime} method="POST"/>
@@ -137,13 +137,13 @@ export const AdminShowtimesPage = () => {
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="right">Фильм</TableCell>
-                                <TableCell align="right">Кинотеатр</TableCell>
-                                <TableCell align="right">Зал</TableCell>
-                                <TableCell align="right">Дата сеанса</TableCell>
-                                <TableCell align="right">Конец сеанса</TableCell>
-                                <TableCell align="right">Початок </TableCell>
-                                <TableCell align="right">Цена за бІлет </TableCell>
+                                <TableCell align="right">Movie</TableCell>
+                                <TableCell align="right">CInema</TableCell>
+                                <TableCell align="right">Hall</TableCell>
+                                <TableCell align="right">Date start</TableCell>
+                                <TableCell align="right">Date end</TableCell>
+                                <TableCell align="right">Start at</TableCell>
+                                <TableCell align="right">Price </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

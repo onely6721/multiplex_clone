@@ -82,9 +82,9 @@ export const AdminCinemasPage = () => {
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="right">Назва</TableCell>
-                                <TableCell align="right">Адреса</TableCell>
-                                <TableCell align="right">Місто</TableCell>
+                                <TableCell align="right">Name</TableCell>
+                                <TableCell align="right">Address</TableCell>
+                                <TableCell align="right">City</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -104,7 +104,7 @@ export const AdminCinemasPage = () => {
                                             style={{color: "red"}}
                                             onClick={() => handleDelete(cinema)}
                                         >
-                                            Видалити
+                                            Delete
                                         </Button><
                                     /TableCell>
                                 </TableRow>

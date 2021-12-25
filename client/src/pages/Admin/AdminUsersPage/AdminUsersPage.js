@@ -66,17 +66,17 @@ export const AdminUsersPage = () => {
     };
     return (
         <div style={{color:"white", marginTop:"100px"}}>
-            <h1 align="center">Користувачі</h1>
+            <h1 align="center">Users</h1>
             <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="right">Логін</TableCell>
+                                <TableCell align="right">Username</TableCell>
                                 <TableCell align="right">E-mail</TableCell>
-                                <TableCell align="right">Ім'я</TableCell>
-                                <TableCell align="right">Прізвище</TableCell>
-                                <TableCell align="right">Роль</TableCell>
+                                <TableCell align="right">First name</TableCell>
+                                <TableCell align="right">Second name</TableCell>
+                                <TableCell align="right">Role</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

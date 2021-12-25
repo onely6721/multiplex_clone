@@ -20,25 +20,25 @@ export const AdminMenu = props => {
             >
                 <List style={{padding:"20px"}}>
                     <ListItem>
-                        <Link to="/admin/stats" style={{color:"black"}}>Статистика</Link>
+                        <Link to="/admin/stats" style={{color:"black"}}>Stats</Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/admin/films" style={{color:"black"}}>Фільми</Link>
+                        <Link to="/admin/films" style={{color:"black"}}>Movies</Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/admin/cinemas" style={{color:"black"}}>Кінотеатри</Link>
+                        <Link to="/admin/cinemas" style={{color:"black"}}>Cinemas</Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/admin/halls" style={{color:"black"}}>Зали</Link>
+                        <Link to="/admin/halls" style={{color:"black"}}>Halls</Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/admin/showtimes" style={{color:"black"}}>Час показу</Link>
+                        <Link to="/admin/showtimes" style={{color:"black"}}>Showtimes</Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/admin/reservations" style={{color:"black"}}>Бронювання</Link>
+                        <Link to="/admin/reservations" style={{color:"black"}}>Reservations</Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/admin/users" style={{color:"black"}}>Користувачі</Link>
+                        <Link to="/admin/users" style={{color:"black"}}>Users</Link>
                     </ListItem>
                 </List>
             </Drawer>

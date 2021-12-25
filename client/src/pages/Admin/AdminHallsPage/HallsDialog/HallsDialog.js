@@ -71,15 +71,15 @@ export const HallsDialog = props => {
     return (
         <div>
             <Button onClick={handleClickOpen}>
-                {props.method === "POST" ? `Створити` : `Редагувати`}
+                {props.method === "POST" ? `Create` : `Edit`}
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{props.method === "POST" ? `Створити` : `Редагувати`} зал</DialogTitle>
+                <DialogTitle>{props.method === "POST" ? `Create` : `Edit`} hall</DialogTitle>
                 <DialogContent  style={{padding:"20px"}} >
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Название"
+                        label="Name"
                         defaultValue={name}
                         onChange={(e) => setName(e.target.value)}
                         fullWidth
@@ -87,7 +87,7 @@ export const HallsDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="rows"
+                        label="Rows"
                         defaultValue={rows}
                         onChange={(e) => setRows(e.target.value)}
                         fullWidth
@@ -95,14 +95,14 @@ export const HallsDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="columns"
+                        label="Columns"
                         defaultValue={columns}
                         onChange={(e) => setColumns(e.target.value)}
                         fullWidth
                     />
 
                     <FormControl sx={{ width: 300, marginTop: 3}}>
-                        <InputLabel id="demo-multiple-name-label">Город</InputLabel>
+                        <InputLabel id="demo-multiple-name-label">City</InputLabel>
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
@@ -123,8 +123,8 @@ export const HallsDialog = props => {
                     </FormControl>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Скасувати</Button>
-                    <Button onClick={handleCreate}>{props.method === "POST" ? `Створити` : `Редагувати`}</Button>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleCreate}>{props.method === "POST" ? `Create` : `Edit`}</Button>
                 </DialogActions>
             </Dialog>
         </div>

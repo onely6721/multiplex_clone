@@ -29,7 +29,7 @@ export const MainPage = () => {
                     <MovieSlider/>
                 </>
                 :
-                    <h1>Фильмов пока-что нет</h1>
+                    <h1>No films yet</h1>
             }
 
         </div>

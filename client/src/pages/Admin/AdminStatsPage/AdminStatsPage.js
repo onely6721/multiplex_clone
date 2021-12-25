@@ -47,14 +47,14 @@ export const AdminStatsPage = () => {
                  align="center"
                  className={classes.reservationTitle}
              >
-                 Статистика
+                 Stats
              </h1>
              <Grid className={classes.offset} container spacing={2}>
                  <Grid item xs={12} md={4}>
                      <Card sx={{ minWidth: 275 }}>
                          <CardContent>
                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                 Всього користувачів
+                                 Total users
                              </Typography>
                              <Typography sx={{ mb: 1.5 }} color="text.secondary">
                                  {userCount.totalUsers}
@@ -66,7 +66,7 @@ export const AdminStatsPage = () => {
                      <Card sx={{ minWidth: 275 }}>
                          <CardContent>
                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Користувачів за місяць
+                                Users per month
                              </Typography>
                              <Typography sx={{ mb: 1.5 }} color="text.secondary">
                                  {userCount.usersPerMonth}
@@ -78,7 +78,7 @@ export const AdminStatsPage = () => {
                      <Card sx={{ minWidth: 275 }}>
                          <CardContent>
                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                 Нових користувачів за неділю
+                                 Users per week
                              </Typography>
                              <Typography sx={{ mb: 1.5 }} color="text.secondary">
                                  {userCount.usersPerWeek}
@@ -90,7 +90,7 @@ export const AdminStatsPage = () => {
                      <Card sx={{ minWidth: 275 }}>
                          <CardContent>
                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                 Всього бронювать
+                                 Total reservations
                              </Typography>
                              <Typography sx={{ mb: 1.5 }} color="text.secondary">
                                  {totalCount}
@@ -102,16 +102,16 @@ export const AdminStatsPage = () => {
                      <Card sx={{ minWidth: 275 }}>
                          <CardContent>
                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                 Дохід
+                                 Earning
                              </Typography>
                              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                                 {totalCash} грн.
+                                 {totalCash}$
                              </Typography>
                          </CardContent>
                      </Card>
                  </Grid>
              </Grid>
-             <h1 className={classes.offset} align="center"> Статистика по фільмам</h1>
+             <h1 className={classes.offset} align="center"> Movies</h1>
              <Grid container spacing={2} className={classes.offset}>
                  {reservations.map((reservation, index) => {
                      return (

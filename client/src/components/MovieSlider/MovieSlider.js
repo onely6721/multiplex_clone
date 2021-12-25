@@ -29,7 +29,7 @@ export const MovieSlider  = () => {
                 marginTop:"30px",
             }}>
                 <Container>
-                    <h1 style={{color:"white", marginBottom:"30px"}}>Сейчас в прокате</h1>
+                    <h1 style={{color:"white", marginBottom:"30px"}}>Shows</h1>
                     <Slider {...settings}>
                         {movies.map((movie, index) => {
                             return (

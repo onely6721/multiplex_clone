@@ -92,7 +92,7 @@ export const ScheduleDialog = props => {
     return (
         <div>
             <Button  onClick={handleClickOpen}>
-                Згенерувати графік
+                Generate schedule
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Згенерувати графік</DialogTitle>
@@ -100,7 +100,7 @@ export const ScheduleDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Ціна за квиток"
+                        label="Price"
                         defaultValue={showtime.price}
                         onChange={(e) => setShowtime({...showtime, price: e.target.value})}
                         fullWidth
@@ -108,7 +108,7 @@ export const ScheduleDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Перерив між сеансом(у хвилинах)"
+                        label="Delay(in minutes)"
                         defaultValue={showtime.delay}
                         onChange={(e) => setShowtime({...showtime, delay: e.target.value})}
                         fullWidth
@@ -116,7 +116,7 @@ export const ScheduleDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Тривалість сеансу"
+                        label="Duration"
                         defaultValue={showtime.duration}
                         onChange={(e) => setShowtime({...showtime, duration: e.target.value})}
                         fullWidth
@@ -124,13 +124,13 @@ export const ScheduleDialog = props => {
                     <TextField
                         margin="dense"
                         id="outlined-helperText"
-                        label="Кількість сеансів"
+                        label="Count showtime"
                         defaultValue={showtime.count}
                         onChange={(e) => setShowtime({...showtime, count: e.target.value})}
                         fullWidth
                     />
                     <FormControl sx={{ width: 300, marginTop: 3}}>
-                        <InputLabel id="demo-multiple-name-label">Фильм</InputLabel>
+                        <InputLabel id="demo-multiple-name-label">Movie</InputLabel>
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
@@ -150,7 +150,7 @@ export const ScheduleDialog = props => {
                         </Select>
                     </FormControl>
                     <FormControl sx={{ width: 300, marginTop: 3}}>
-                        <InputLabel id="demo-multiple-name-label">Кинотеатр</InputLabel>
+                        <InputLabel id="demo-multiple-name-label">Cinema</InputLabel>
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
@@ -170,7 +170,7 @@ export const ScheduleDialog = props => {
                         </Select>
                     </FormControl>
                     <FormControl sx={{ width: 300, marginTop: 3}}>
-                        <InputLabel id="demo-multiple-name-label">Зал</InputLabel>
+                        <InputLabel id="demo-multiple-name-label">Hall</InputLabel>
                         <Select
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
@@ -202,8 +202,8 @@ export const ScheduleDialog = props => {
                     </LocalizationProvider>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Скасувати</Button>
-                    <Button onClick={handleCreate}>Згенерувати</Button>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleCreate}>Generate</Button>
                 </DialogActions>
             </Dialog>
         </div>
