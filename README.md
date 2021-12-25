@@ -27,8 +27,7 @@ cd server npm run dev
 cd client npm start
 ```
 
-
-**Screenshots**
+#Screenshots
 
 **Main Page**
 ![MainPage](https://i.ibb.co/MPFHK9T/image.png)
